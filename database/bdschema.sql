@@ -1,7 +1,11 @@
 -- SCHEMA: bdschema
 
 DROP SCHEMA IF EXISTS bdschema CASCADE;
+DROP DOMAIN IF EXISTS typeDeMisEnPlace CASCADE;
 
+CREATE DOMAIN typeDeMisEnPlace AS VARCHAR(30)
+	CHECK (VALUE IN ('type1', 'type2', 'type3'));
+	
 CREATE SCHEMA IF NOT EXISTS bdschema
     AUTHORIZATION postgres;
 
@@ -34,7 +38,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Semencier(
 
 CREATE TABLE IF NOT EXISTS bdschema.Variete(
 	nom VARCHAR(30) NOT NULL,
-	anneeDeMiseEnMarche SMALLINT NOT NULL, -- CHECK SO IT IS NOT NEGATIVE VALUE
+	anneeDeMiseEnMarche SMALLINT NOT NULL CHECK (anneeDeMiseEnMarche > 0),
 	descriptionsSemis TEXT NOT NULL,
 	plantation VARCHAR(50) NOT NULL,
 	entretien VARCHAR(50) NOT NULL,
@@ -108,7 +112,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Rang(
     parcelleId VARCHAR(10) NOT NULL,
     coordonneeX VARCHAR(6) NOT NULL,
     coordonneeY VARCHAR(6) NOT NULL,
-	numero VARCHAR(10) NOT NULL,
+	numero SMALLINT NOT NULL CHECK (numero > 0),
 	joursDeJachere SMALLINT DEFAULT 0,
 	PRIMARY KEY (rangId, jardinId, parcelleId),
     FOREIGN KEY (parcelleId, jardinId) REFERENCES bdschema.Parcelle(parcelleId, jardinId)
