@@ -83,76 +83,76 @@ INSERT INTO bdschema.Parcelle(parcelleId, jardinId, coordonneeX, coordonneeY, di
 
 -- RANGS DE DU JARDIN 0 PARCELLE 0
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '0', '0', '0', '0', '1', 0);
+	VALUES ('0', '0', '0', '0', '0', 1, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '0', '0', '2', '8', '2', 0);
+	VALUES ('1', '0', '0', '2', '8', 2, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '0', '0', '3', '10', '3',0);
+	VALUES ('2', '0', '0', '3', '10', 3,0);
 -- RANGS DE DU JARDIN 0 PARCELLE 1
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '0', '1', '0', '0', '1', 1);
+	VALUES ('0', '0', '1', '0', '0', 1, 1);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '0', '1', '2', '8', '2', 1);
+	VALUES ('1', '0', '1', '2', '8', 2, 1);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '0', '1', '3', '10', '3', 1);
+	VALUES ('2', '0', '1', '3', '10', 3, 1);
 -- RANGS DE DU JARDIN 0 PARCELLE 2
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '0', '2', '0', '0', '1', 2);
+	VALUES ('0', '0', '2', '0', '0', 1, 2);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '0', '2', '2', '8', '2', 2);
+	VALUES ('1', '0', '2', '2', '8', 2, 2);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '0', '2', '3', '10', '3', 2);
+	VALUES ('2', '0', '2', '3', '10', 3, 2);
 
 -- RANGS DE DU JARDIN 1 PARCELLE 0
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '1', '0', '0', '0', '1', 2);
+	VALUES ('0', '1', '0', '0', '0', 1, 2);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '1', '0', '2', '2', '2', 56);
+	VALUES ('1', '1', '0', '2', '2', 2, 56);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '1', '0', '4', '4', '3', 1);
+	VALUES ('2', '1', '0', '4', '4', 3, 1);
 -- RANGS DE DU JARDIN 1 PARCELLE 1
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '1', '1', '0', '0', '1', 0);
+	VALUES ('0', '1', '1', '0', '0', 1, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '1', '1', '2', '2', '2', 5);
+	VALUES ('1', '1', '1', '2', '2', 2, 5);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '1', '1', '4', '4', '3', 64);
+	VALUES ('2', '1', '1', '4', '4', 3, 64);
 -- RANGS DE DU JARDIN 1 PARCELLE 2
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '1', '2', '0', '0', '1', 0);
+	VALUES ('0', '1', '2', '0', '0', 1, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '1', '2', '2', '2', '2', 0);
+	VALUES ('1', '1', '2', '2', '2', 2, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '1', '2', '4', '4', '3', 5);
+	VALUES ('2', '1', '2', '4', '4', 3, 5);
 
 -- RANGS DE DU JARDIN 2 PARCELLE 0
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '2', '0', '0', '0', '1', 2);
+	VALUES ('0', '2', '0', '0', '0', 1, 2);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '2', '0', '2', '2', '2', 5);
+	VALUES ('1', '2', '0', '2', '2', 2, 5);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '2', '0', '4', '4', '3', 0);
+	VALUES ('2', '2', '0', '4', '4', 3, 0);
 -- RANGS DE DU JARDIN 2 PARCELLE 1
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '2', '1', '0', '0', '1', 21);
+	VALUES ('0', '2', '1', '0', '0', 1, 21);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '2', '1', '2', '2', '2', 0);
+	VALUES ('1', '2', '1', '2', '2', 2, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '2', '1', '4', '4', '3', 6);
+	VALUES ('2', '2', '1', '4', '4', 3, 6);
 -- RANGS DE DU JARDIN 2 PARCELLE 2
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '2', '2', '0', '0', '1', 64);
+	VALUES ('0', '2', '2', '0', '0', 1, 64);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '2', '2', '2', '2', '2', 6);
+	VALUES ('1', '2', '2', '2', '2', 2, 6);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '2', '2', '4', '4', '3', 0);
+	VALUES ('2', '2', '2', '4', '4', 3, 0);
 -- RANGS DE DU JARDIN 2 PARCELLE 3
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('0', '2', '3', '0', '0', '1', 0);
+	VALUES ('0', '2', '3', '0', '0', 1, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('1', '2', '3', '2', '2', '2', 0);
+	VALUES ('1', '2', '3', '2', '2', 2, 0);
 INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY, numero, joursDeJachere)
-	VALUES ('2', '2', '3', '4', '4', '3', 0);	
+	VALUES ('2', '2', '3', '4', '4', 3, 0);	
 
 -- CONTENU RANG JARDIN 0 PARCELLE 0
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
