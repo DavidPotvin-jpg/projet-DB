@@ -24,7 +24,7 @@ export class DatabaseService {
   public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
     
     const client = await this.pool.connect();
-    const res = await client.query(`SELECT * FROM HOTELDB.${tableName};`);
+    const res = await client.query(`SELECT * FROM bdschema.${tableName};`);
     client.release()
     return res;
   }
