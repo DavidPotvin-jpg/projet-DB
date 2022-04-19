@@ -29,6 +29,15 @@ export class DatabaseService {
     return res;
   }
 
+  public async getTime() {
+    const client = await this.pool.connect();
+    this.pool.query('SELECT NOW()', (err, res) => {
+      console.log(err, res);
+    });
+    client.release()
+
+  }
+
 
   // ======= HOTEL =======
   public async createHotel(hotel: Hotel): Promise<pg.QueryResult> {
