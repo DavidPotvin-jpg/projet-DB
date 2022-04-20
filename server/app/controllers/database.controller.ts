@@ -9,6 +9,7 @@ import { Guest } from "../../../common/tables/Guest";
 
 import { DatabaseService } from "../services/database.service";
 import Types from "../types";
+import { Garden } from "../interfaces/garden";
 
 @injectable()
 export class DatabaseController {
@@ -18,6 +19,30 @@ export class DatabaseController {
 
   public get router(): Router {
     const router: Router = Router();
+
+    // ====== GARDENS ROUTES =====
+    // GET path-to-server/database/gardens
+    router.get("/gardens", async (req: Request, res: Response, _: NextFunction) => {
+        try {
+          const gardensTable = await this.databaseService.getAllFromTable('Jardin'); // TODO: enum for tables table
+          res.json([...gardensTable.rows]);
+          
+        } catch (error) {
+            console.error(error.message);
+        }
+    });
+    // ?sorted=true
+    router.get("/gardens/:id", async (req: Request, res: Response, _: NextFunction) => {
+      try {
+        // TODO: handle empty info
+        const id = req.params.id;
+        const gardenRowsContents = await this.databaseService.getGardenContent(id);
+        res.json([...gardenRowsContents.rows]);
+        
+      } catch (error) {
+          console.error(error.message);
+      }
+  });
 
     // ======= HOTEL ROUTES =======
     // ex http://localhost:3000/database/hotel?hotelNb=3&name=LeGrandHotel&city=laval
