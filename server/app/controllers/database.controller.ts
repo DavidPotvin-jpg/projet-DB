@@ -123,26 +123,26 @@ export class DatabaseController {
 
     // ======= ROOMS ROUTES =======
     router.get("/rooms", (req: Request, res: Response, _: NextFunction) => {
-      const hotelNb = req.query.hotelNb ? req.query.hotelNb : "";
-      const roomNb = req.query.roomNb ? req.query.roomNb : "";
-      const roomType = req.query.type ? req.query.type : "";
-      const roomPrice = req.query.price ? parseFloat(req.query.price) : -1;
+      // const hotelNb = req.query.hotelNb ? req.query.hotelNb : "";
+      // const roomNb = req.query.roomNb ? req.query.roomNb : "";
+      // const roomType = req.query.type ? req.query.type : "";
+      // // const roomPrice = req.query.price ? parseFloat(req.query.price) : -1;
 
-      this.databaseService
-        .filterRooms(hotelNb, roomNb, roomType, roomPrice)
-        .then((result: pg.QueryResult) => {
-          const rooms: Room[] = result.rows.map((room: Room) => ({
-            hotelnb: room.hotelnb,
-            roomnb: room.roomnb,
-            type: room.type,
-            price: parseFloat(room.price.toString()),
-          }));
+      // this.databaseService
+      //   .filterRooms(hotelNb, roomNb, roomType, roomPrice)
+      //   .then((result: pg.QueryResult) => {
+      //     const rooms: Room[] = result.rows.map((room: Room) => ({
+      //       hotelnb: room.hotelnb,
+      //       roomnb: room.roomnb,
+      //       type: room.type,
+      //       price: parseFloat(room.price.toString()),
+      //     }));
 
-          res.json(rooms);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });
+      //     res.json(rooms);
+      //   })
+      //   .catch((e: Error) => {
+      //     console.error(e.stack);
+      //   });
     });
 
 
