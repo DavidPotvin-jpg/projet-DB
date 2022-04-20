@@ -224,7 +224,7 @@ SELECT * FROM bdschema.TypeSol;
 SELECT * FROM bdschema.Jardin;
 SELECT * FROM bdschema.Semencier;
 SELECT * FROM bdschema.Variete;
-SELECT * FROM bdschema.Plante;
+SELECT * FROM bdschema.Plante ORDER BY planteId;
 SELECT * FROM bdschema.AssociationNefaste;
 SELECT * FROM bdschema.AssociationBenefique;
 SELECT * FROM bdschema.ContenuJardin;
@@ -235,6 +235,4 @@ SELECT * FROM bdschema.ProductionSemencier;
 SELECT * FROM bdschema.Affinite;
 
 SELECT * FROM bdschema.HistoriqueContenuRang;
-
-
 
