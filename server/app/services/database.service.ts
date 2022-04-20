@@ -23,45 +23,55 @@ export class DatabaseService {
 
 
   // US
+  public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
+    return this.executeQuery(DatabaseQuery.getAllTable + `${tableName} ;`);
+  }
   public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
+    return this.executeQuery(DatabaseQuery.getGardenContent, [...arguments]);
+  }
+  
+  public async getVarityDetails(varityName: string): Promise<pg.QueryResult> {
+    return this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);
+  }
+  public async insertPlant(latinName: string, varietyName: string, name: string, category: string, type_: string, subType: string): Promise<pg.QueryResult> {
+    const id = '69';
+    return this.executeQuery(DatabaseQuery.insertPlant, [id, ...arguments]);
+  }
+  public async deletePlant(plantId: string): Promise<pg.QueryResult> {
+    return this.executeQuery(DatabaseQuery.deletePlant, [...arguments]);
+  }
+  public async searchPlant(toSearch: string): Promise<pg.QueryResult> {
+    return this.executeQuery(DatabaseQuery.searchPlant, [...arguments]);
+  }
+  public async updatePlant(plantId: string,
+                           newLatinName: string, 
+                           newVarietyName: string, 
+                           newName: string, 
+                           category: string, 
+                           type_: string, 
+                           subType: string): Promise<pg.QueryResult> {
+    return this.executeQuery(DatabaseQuery.updatePlantInformation, [...arguments]);
+  }
+  private async executeQuery(query: string, data?: any): Promise<pg.QueryResult> {
     try {
       const client = await this.pool.connect();
-      const res = await client.query(DatabaseQuery.getGardenContent, [gardenId]);
-      console.table(res);
+      const res =  data? await client.query(query, data) : await client.query(query);
       client.release()
       return res;
-    }
-    catch(error){
+
+    } catch(error) {
       console.info(error);
       return error;
     }
   }
   
-  // ======= DEBUG =======
-  public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
-    
-    const client = await this.pool.connect();
-    const res = await client.query(`SELECT * FROM bdschema.${tableName};`);
-    client.release()
-    return res;
-  }
-
-  public async getTime() {
-    const client = await this.pool.connect();
-    this.pool.query('SELECT NOW()', (err, res) => {
-      console.log(err, res);
-    });
-    client.release()
-  }
-
-
   // ======= HOTEL =======
   public async createHotel(hotel: Hotel): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
 
     if (!hotel.hotelnb || !hotel.name || !hotel.city)
       throw new Error("Invalid create hotel values");
-
+      
     const values: string[] = [hotel.hotelnb, hotel.name, hotel.city];
     const queryText: string = `INSERT INTO HOTELDB.Hotel VALUES($1, $2, $3);`;
 
@@ -70,7 +80,7 @@ export class DatabaseService {
     return res;
   }
 
-
+  
   // get hotels that correspond to certain caracteristics
   public async filterHotels(hotelNb: string, hotelName: string, city: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
