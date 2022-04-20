@@ -9,7 +9,6 @@ import { Guest } from "../../../common/tables/Guest";
 
 import { DatabaseService } from "../services/database.service";
 import Types from "../types";
-import { Garden } from "../interfaces/garden";
 
 @injectable()
 export class DatabaseController {
@@ -31,7 +30,62 @@ export class DatabaseController {
             console.error(error.message);
         }
     });
-    // ?sorted=true
+    router.get("/plants", async (req: Request, res: Response, _: NextFunction) => {
+      try {
+        const plantsTable = await this.databaseService.getAllFromTable('Plante');
+        res.json([...plantsTable.rows]);
+
+      } catch(error) {
+        console.error(error.message);
+      }
+
+    });
+    router.delete("/plants/:id", async (req: Request, res: Response, _: NextFunction) => {
+      try {
+        const id = req.params.id;
+        this.databaseService.deletePlant(id);
+        res.sendStatus(204);
+        // res.sendStatus(418);
+
+      } catch(error) {
+        console.error(error.message);
+      }
+
+    });
+    router.post("/plants", async (req: Request, res: Response, _: NextFunction) => {
+      try {
+        const plant = req.body;
+        this.databaseService.insertPlant(plant.newLatinName, plant.newVarietyName, plant.newName, plant.category, plant.type_, plant.subType);
+        res.status(200).send('Plant born of a 69 babay');
+      } catch(error) {
+        console.error(error.message);
+      }
+
+    });
+    router.patch("/plants/:id", async (req: Request, res: Response, _: NextFunction) => {
+      try {
+        const id = req.params.id;
+        const plant = req.body;
+        this.databaseService.updatePlant(id, plant.newLatinName, plant.newVarietyName, plant.newName, plant.category, plant.type_, plant.subType);
+        res.status(204).send();
+
+      } catch(error) {
+        console.error(error.message);
+      }
+
+    });
+    // https://stackoverflow.com/a/20386425
+    router.get("/plants/names/:name", async (req: Request, res: Response, _: NextFunction) => {
+      try {
+        // TODO: handle empty info
+        const name = req.params.name;
+        const gardenRowsContents = await this.databaseService.searchPlant(name);
+        res.json([...gardenRowsContents.rows]); // TODO this should not be an array
+        
+      } catch (error) {
+          console.error(error.message);
+      }
+    });
     router.get("/gardens/:id", async (req: Request, res: Response, _: NextFunction) => {
       try {
         // TODO: handle empty info
