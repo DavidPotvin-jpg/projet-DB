@@ -4,6 +4,7 @@ import "reflect-metadata";
 import { Room } from "../../../common/tables/Room";
 import { Hotel } from "../../../common/tables/Hotel";
 import { Gender, Guest } from "../../../common/tables/Guest";
+import { DatabaseQuery } from "./constants/querries/sql-querries";
 
 @injectable()
 export class DatabaseService {
@@ -11,8 +12,8 @@ export class DatabaseService {
   // TODO: A MODIFIER POUR VOTRE BD
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
-    database: "hoteldb",
-    password: "admin",
+    database: "postgres",
+    password: "Admin",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -20,13 +21,37 @@ export class DatabaseService {
 
   public pool: pg.Pool = new pg.Pool(this.connectionConfig);
 
+
+  // US
+  public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
+    try {
+      const client = await this.pool.connect();
+      const res = await client.query(DatabaseQuery.getGardenContent, [gardenId]);
+      console.table(res);
+      client.release()
+      return res;
+    }
+    catch(error){
+      console.info(error);
+      return error;
+    }
+  }
+  
   // ======= DEBUG =======
   public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
     
     const client = await this.pool.connect();
-    const res = await client.query(`SELECT * FROM HOTELDB.${tableName};`);
+    const res = await client.query(`SELECT * FROM bdschema.${tableName};`);
     client.release()
     return res;
+  }
+
+  public async getTime() {
+    const client = await this.pool.connect();
+    this.pool.query('SELECT NOW()', (err, res) => {
+      console.log(err, res);
+    });
+    client.release()
   }
 
 

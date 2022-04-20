@@ -2,6 +2,7 @@ import * as http from "http";
 import { inject, injectable } from "inversify";
 import { AddressInfo } from "net";
 import { Application } from "./app";
+import { DatabaseService } from "./services/database.service";
 import Types from "./types";
 
 @injectable()
@@ -56,9 +57,15 @@ export class Server {
    * Se produit lorsque le serveur se met à écouter sur le port.
    */
   private onListening(): void {
-    const addr: string | AddressInfo = this.server.address();
+    const addr: string | AddressInfo | null = this.server.address();
+    if (!addr) { 
+      console.info('server adress is null'); 
+      return;
+    }
     const bind: string = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
     // tslint:disable-next-line:no-console
     console.log(`Listening on ${bind}`);
+    const dbService = new DatabaseService();
+    dbService.getGardenContent('0').then((obj) => {console.table(obj.rows);});
   }
 }
