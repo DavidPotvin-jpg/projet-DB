@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS bdschema.TypeSol(
 
 -- TODO: Verification when inserting data | TRIGGER BEFORE ON INSERT
 CREATE TABLE IF NOT EXISTS bdschema.Jardin(
-	jardinId VARCHAR(10) NOT NULL,
+	jardinId SERIAL,
 	typeSol VARCHAR(20) NOT NULL,
 	nom VARCHAR(20) NOT NULL,
 	surface SMALLINT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Variete(
 );
 
 CREATE TABLE IF NOT EXISTS bdschema.Plante(
-	planteId VARCHAR(10) NOT NULL,
+	planteId SERIAL,
 	nomLatin VARCHAR(20) NOT NULL,
 	nomVariete VARCHAR(30) NOT NULL,
 	nom VARCHAR(30) NOT NULL,
@@ -63,8 +63,8 @@ CREATE TABLE IF NOT EXISTS bdschema.Plante(
 );
 
 CREATE TABLE IF NOT EXISTS bdschema.AssociationNefaste(
-	idPlanteInitiale VARCHAR(10) NOT NULL,
-	idPlanteNefaste VARCHAR(10) NOT NULL,
+	idPlanteInitiale SERIAL,
+	idPlanteNefaste SERIAL,
     solution TEXT NOT NULL,
     PRIMARY KEY (idPlanteInitiale, idPlanteNefaste),
     FOREIGN KEY (idPlanteInitiale) REFERENCES bdschema.Plante(planteId)
@@ -74,8 +74,8 @@ CREATE TABLE IF NOT EXISTS bdschema.AssociationNefaste(
 );
 
 CREATE TABLE IF NOT EXISTS bdschema.AssociationBenefique(
-    idPlanteInitiale VARCHAR(10) NOT NULL,
-	idPlanteBenefique VARCHAR(10) NOT NULL,
+    idPlanteInitiale SERIAL,
+	idPlanteBenefique SERIAL,
     PRIMARY KEY (idPlanteInitiale, idPlanteBenefique),
     FOREIGN KEY (idPlanteInitiale) REFERENCES bdschema.Plante(planteId)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS bdschema.AssociationBenefique(
 );
 
 CREATE TABLE IF NOT EXISTS bdschema.ContenuJardin(
-    jardinId VARCHAR(10) NOT NULL,
-	planteId VARCHAR(10) NOT NULL,
+    jardinId SERIAL,
+	planteId SERIAL,
     PRIMARY KEY (jardinId, planteId),
 	FOREIGN KEY (jardinId) REFERENCES bdschema.Jardin(jardinId)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS bdschema.ContenuJardin(
 
 CREATE TABLE IF NOT EXISTS bdschema.Parcelle(
     parcelleId VARCHAR(10) NOT NULL,
-    jardinId VARCHAR(10) NOT NULL,
+    jardinId SERIAL,
     coordonneeX VARCHAR(6) NOT NULL,
     coordonneeY VARCHAR(6) NOT NULL,
     dimensionX SMALLINT NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Parcelle(
 
 CREATE TABLE IF NOT EXISTS bdschema.Rang(
 	rangId VARCHAR(10) NOT NULL,
-    jardinId VARCHAR(10) NOT NULL,
+    jardinId SERIAL,
     parcelleId VARCHAR(10) NOT NULL,
     coordonneeX VARCHAR(6) NOT NULL,
     coordonneeY VARCHAR(6) NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Rang(
 CREATE TABLE IF NOT EXISTS bdschema.ContenuRang(
 	nomVariete VARCHAR(30) NOT NULL,
     rangId VARCHAR(10) NOT NULL,
-	jardinId VARCHAR(10) NOT NULL,
+	jardinId SERIAL,
     parcelleId VARCHAR(10) NOT NULL,
 	typeMisEnPlace VARCHAR(30) NOT NULL,
 	PRIMARY KEY (nomVariete, rangId, jardinId, parcelleId ),
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Affinite(
 CREATE TABLE IF NOT EXISTS bdschema.HistoriqueContenuRang(
     nomVariete VARCHAR(30) NOT NULL,
     rangId VARCHAR(10) NOT NULL,
-    jardinId VARCHAR(10) NOT NULL,
+    jardinId SERIAL,
     parcelleId VARCHAR(10) NOT NULL,
     typeMisEnPlace VARCHAR(30) NOT NULL,
     dateDeSauvegarde TIMESTAMP NOT NULL,
