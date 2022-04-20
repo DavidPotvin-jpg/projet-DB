@@ -1,4 +1,52 @@
-# Exclusion des dépendences du projet. Elles peuvent être regénérées 
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+!package-lock.json
+
+# System Files
+.DS_Store
+Thumbs.db
+
+
+# Exclusion des dépendences du projet. Elles peuvent être regénérées
 # automatiquement.
 .nyc_output/
 node_modules/
@@ -9,9 +57,6 @@ out/
 
 # NPM Debug Log
 npm-debug.log
-
-# Code Coverage Folder
-coverage/
 
 ##Typescrit compilation ##
 
@@ -24,5 +69,7 @@ coverage/
 !karma.conf.js
 !karma-test-shim.js
 !systemjs.config.extras.js
-!tslint.json
+!tsconfig.app.json
+!tsconfig.spec.json
 !tsconfig.json
+!package-lock.json
