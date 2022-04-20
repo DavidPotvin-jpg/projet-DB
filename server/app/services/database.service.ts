@@ -33,14 +33,15 @@ export class DatabaseService {
     return this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);
   }
   public async insertPlant(latinName: string, varietyName: string, name: string, category: string, type_: string, subType: string): Promise<pg.QueryResult> {
-    const id = '69';
-    return this.executeQuery(DatabaseQuery.insertPlant, [id, ...arguments]);
+
+    return this.executeQuery(DatabaseQuery.insertPlant, [...arguments]);
   }
   public async deletePlant(plantId: string): Promise<pg.QueryResult> {
     return this.executeQuery(DatabaseQuery.deletePlant, [...arguments]);
   }
-  public async searchPlant(toSearch: string): Promise<pg.QueryResult> {
-    return this.executeQuery(DatabaseQuery.searchPlant, [...arguments]);
+  public async searchPlant(nameContent: string): Promise<pg.QueryResult> {
+    console.info(`${DatabaseQuery.searchPlant} '%${nameContent}%';`);
+    return this.executeQuery(`${DatabaseQuery.searchPlant} '%${nameContent}%';`);
   }
   public async updatePlant(plantId: string,
                            newLatinName: string, 

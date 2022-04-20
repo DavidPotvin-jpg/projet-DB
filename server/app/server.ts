@@ -66,6 +66,6 @@ export class Server {
     // tslint:disable-next-line:no-console
     console.log(`Listening on ${bind}`);
     const dbService = new DatabaseService();
-    dbService.getGardenContent('0').then((obj) => {console.table(obj.rows);});
+    dbService.getGardenContent('1').then((obj) => {console.table(obj.rows);});
   }
 }
