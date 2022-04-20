@@ -29,8 +29,7 @@ export class DatabaseService {
   public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
     return this.executeQuery(DatabaseQuery.getGardenContent, [...arguments]);
   }
-  
-  public async getVarityDetails(varityName: string): Promise<pg.QueryResult> {
+  public async getVarietyDetails(varietyName: string): Promise<pg.QueryResult> {
     return this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);
   }
   public async insertPlant(latinName: string, varietyName: string, name: string, category: string, type_: string, subType: string): Promise<pg.QueryResult> {
