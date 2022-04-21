@@ -79,7 +79,7 @@ export class DatabaseService {
       return res;
 
     } catch(error) {
-      console.table(error);
+      console.error(error);
       return error;
     }
   }
