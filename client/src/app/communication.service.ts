@@ -7,7 +7,9 @@ import { Hotel } from "../../../common/tables/Hotel";
 import { Room } from "../../../common/tables/Room";
 import { HotelPK } from "../../../common/tables/HotelPK";
 import { Guest } from "../../../common/tables/Guest";
-
+import { Variety } from "./interfaces/variety";
+import { Garden } from "./interfaces/garden";
+import { Plant } from "./interfaces/plant";
 @Injectable()
 export class CommunicationService {
   private readonly BASE_URL: string = "http://localhost:3000/database";
@@ -18,6 +20,48 @@ export class CommunicationService {
   public listen(): Observable<any> {
     return this._listners.asObservable();
   }
+ 
+  public deleteVariety(varietyName: string): Observable<Variety> {
+    return this.http
+      .delete<Variety>(`${this.BASE_URL}/varieties/${varietyName}`, {})
+      .pipe(catchError(this.handleError<Variety>('deleteVariety')));
+  }
+
+  public addVariety(variety: Variety) {
+    return this.http.post<Variety>(`${this.BASE_URL}/varieties`, variety)
+    .pipe(catchError(this.handleError<Variety>('addVariety')));
+  }
+  
+  public patchVariety(varietyName: string, variety: Variety): Observable<Variety> {
+    return this.http
+      .patch<Variety>(`${this.BASE_URL}/varieties/${varietyName}`, {})
+      .pipe(catchError(this.handleError<Variety>('patchVariety')));
+  }
+  
+  public getVarieties(): Observable<Variety[]> {
+    return this.http
+      .get<Variety[]>(`${this.BASE_URL}/varieties`)
+      .pipe(catchError(this.handleError<Variety[]>('getVarieties')));
+  }
+
+  public getGarden(id: string): Observable<Garden> {
+    return this.http
+      .get<Garden>(`${this.BASE_URL}/gardens/${id}`)
+      .pipe(catchError(this.handleError<Garden>('getGardens')));
+  }
+
+  public getAllGardens(): Observable<Garden[]> {
+    return this.http
+      .get<Garden[]>(`${this.BASE_URL}/gardens`)
+      .pipe(catchError(this.handleError<Garden[]>('getAllGardens')));
+  }
+  
+  public searchPlant(nameContent: string): Observable<Plant[]> {
+    return this.http
+      .get<Plant[]>(`${this.BASE_URL}/plants/names/:name`)
+      .pipe(catchError(this.handleError<Plant[]>('searchPlant')));
+  }
+
 
   public filter(filterBy: string): void {
     this._listners.next(filterBy);
