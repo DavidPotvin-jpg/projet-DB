@@ -22,38 +22,42 @@ export class DatabaseService {
 
   // US
   public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
-    return this.executeQuery(DatabaseQuery.getAllTable + `${tableName} ;`);
+    return await this.executeQuery(DatabaseQuery.getAllTable + `${tableName} ;`);
   }
   public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
-    return this.executeQuery(DatabaseQuery.getGardenContent, [...arguments]);
+    return await this.executeQuery(DatabaseQuery.getGardenContent, [...arguments]);
   }
   public async getVarietyDetails(varietyName: string): Promise<pg.QueryResult> {
-    return this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);
+    return await this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);
   }
   public async insertVariety(variety: Variety): Promise<pg.QueryResult> {
-      return this.executeQuery(DatabaseQuery.insertVariety, [variety.nom, variety.anneeDeMiseEnMarche, variety.descriptionsSemis,
+      return await this.executeQuery(DatabaseQuery.insertVariety, [variety.nom, variety.anneeDeMiseEnMarche, variety.descriptionsSemis,
         variety.plantation, variety.entretien, variety.recolte, variety.periodeMiseEnPlace,
         variety.periodeRecolte, variety.commentaireGenerale]);
   }
   public async updateVariety(variety: Variety): Promise<pg.QueryResult> {
-      return this.executeQuery(
+      return await this.executeQuery(
         DatabaseQuery.updateVarietyInformation, 
         [variety.nom, variety.anneeDeMiseEnMarche, variety.descriptionsSemis,
          variety.plantation, variety.entretien, variety.recolte, variety.periodeMiseEnPlace,
          variety.periodeRecolte, variety.commentaireGenerale]);
   }
   public async deleteVariety(varietyName: string): Promise<pg.QueryResult> {
-    return this.executeQuery(DatabaseQuery.deleteVariety, [...arguments]);
+    const client = await this.pool.connect();
+    const queryText = `DELETE FROM bdschema.Variete WHERE nom = '$1';`;
+    const values: string[] = [varietyName]
+    const res = await client.query(queryText, values)
+    client.release();
+    return res;
   }
   public async searchVariety(nameContent: string): Promise<pg.QueryResult> {
-    return this.executeQuery(`${DatabaseQuery.searchVariety} '%${nameContent}%';`);
+    return await  this.executeQuery(`${DatabaseQuery.searchVariety} '%${nameContent}%';`);
   }
   public async searchPlant(nameContent: string): Promise<pg.QueryResult> {
-    return this.executeQuery(`${DatabaseQuery.searchPlant} '%${nameContent}%';`);
+    return await this.executeQuery(`${DatabaseQuery.searchPlant} '%${nameContent}%';`);
   }
   private async executeQuery(query: string, data?: any): Promise<pg.QueryResult> {
     try {
-      console.table(query)
       const client = await this.pool.connect();
       const res =  data? await client.query(query, data) : await client.query(query);
       client.release()
