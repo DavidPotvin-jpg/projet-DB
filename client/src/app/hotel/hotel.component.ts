@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
-import { Hotel } from "../../../../common/tables/Hotel";
+import { Garden } from "../interfaces/garden";
 import { CommunicationService } from "./../communication.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class HotelComponent {
   @ViewChild("newHotelName") newHotelName: ElementRef;
   @ViewChild("newHotelCity") newHotelCity: ElementRef;
 
-  public hotels: Hotel[] = [];
+  public gardens: Garden[] = [];
   public duplicateError: boolean = false;
 
   public constructor(private communicationService: CommunicationService) {}
@@ -22,53 +22,11 @@ export class HotelComponent {
   }
 
   public getHotels(): void {
-    this.communicationService.getHotels().subscribe((hotels: Hotel[]) => {
-      this.hotels = hotels;
+    this.communicationService.getAllGardens().subscribe((gardens: Garden[]) => {
+      this.gardens = gardens;
     });
+    this.gardens.push({gardenId: '0', typeSol: 'Sableux', name: 'KillerQueen', area: 69, isVegetableGarden: true, isOrchardGarden: false, isOrnament: false, maxHeight: 420, })
   }
 
-  public insertHotel(): void {
-    const hotel: any = {
-      hotelnb: this.newHotelNb.nativeElement.innerText,
-      name: this.newHotelName.nativeElement.innerText,
-      city: this.newHotelCity.nativeElement.innerText,
-    };
-
-    this.communicationService.insertHotel(hotel).subscribe((res: number) => {
-      if (res > 0) {
-        this.communicationService.filter("update");
-      }
-      this.refresh();
-      this.duplicateError = res === -1;
-    });
   }
 
-  private refresh() {
-    this.getHotels();
-    this.newHotelNb.nativeElement.innerText = "";
-    this.newHotelName.nativeElement.innerText = "";
-    this.newHotelCity.nativeElement.innerText = "";
-  }
-
-  public deleteHotel(hotelNb: string) {
-    this.communicationService.deleteHotel(hotelNb).subscribe((res: any) => {
-      this.refresh();
-    });
-  }
-
-  public changeHotelName(event: any, i:number){
-    const editField = event.target.textContent;
-    this.hotels[i].name = editField;
-  }
-
-  public changeHotelCity(event: any, i:number){
-    const editField = event.target.textContent;
-    this.hotels[i].city = editField;
-  }
-
-  public updateHotel(i: number) {
-    this.communicationService.updateHotel(this.hotels[i]).subscribe((res: any) => {
-      this.refresh();
-    });
-  }
-}
