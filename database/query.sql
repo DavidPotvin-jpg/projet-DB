@@ -7,7 +7,7 @@ FROM (
 SELECT Rang.parcelleId, 
 COUNT(*) AS counted
 FROM bdschema.Rang  Rang
-WHERE Rang.jardinId = '0'
+WHERE Rang.jardinId = '1'
 GROUP BY Rang.parcelleId
 	) as MinEtMax;
 	
@@ -49,10 +49,10 @@ EXCEPT
 
 -- 6
 SELECT * FROM (SELECT * FROM bdschema.Rang
-WHERE Rang.JardinId = '0') as TousRangDuJardin
+WHERE Rang.JardinId = '1') as TousRangDuJardin
 NATURAL LEFT OUTER JOIN
 (SELECT * FROM (SELECT * FROM bdschema.Rang
-WHERE Rang.jardinId = '0' AND Rang.joursDeJachere <= 0) rangCultiveDuJardin
+WHERE Rang.jardinId = '1' AND Rang.joursDeJachere <= 0) rangCultiveDuJardin
 NATURAL JOIN bdschema.ContenuRang
 ) as RangCultiveEtVarieteDuJardin;
 
