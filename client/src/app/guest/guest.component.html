@@ -27,19 +27,21 @@
 
     <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
         <thead class="header">
-            <th class="contentCell">GUEST NUMBER</th>
-            <th class="contentCell">NAS</th>
-            <th class="contentCell">NAME</th>
-            <th class="contentCell">GENDER</th>
-            <th class="contentCell">CITY</th>
+            <th class="contentCell">nom latin</th>
+            <th class="contentCell">nom variété</th>
+            <th class="contentCell">nom</th>
+            <th class="contentCell">catégorie</th>
+            <th class="contentCell">type</th>
+            <th class="contentCell">sous-type</th>
         </thead>
         <tbody>
-            <tr *ngFor="let guest of guests">
-                <td class="contentCell">{{ guest.guestnb }}</td>
-                <td class="contentCell">{{ guest.nas }}</td>
-                <td class="contentCell">{{ guest.name }}</td>
-                <td class="contentCell">{{ guest.gender }}</td>
-                <td class="contentCell">{{ guest.city }}</td>
+            <tr *ngFor="let plant of plants">
+                <td class="contentCell">{{ plant.nomLatin }}</td>
+                <td class="contentCell">{{ plant.nomVariete }}</td>
+                <td class="contentCell">{{ plant.nom }}</td>
+                <td class="contentCell">{{ plant.categorie }}</td>
+                <td class="contentCell">{{ plant.type_ }}</td>
+                <td class="contentCell">{{ plant.sousType }}</td>
             </tr>
         </tbody>
     </table>

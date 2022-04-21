@@ -6,6 +6,15 @@ import { CommunicationService } from "../communication.service";
 import { FormGroup } from "@angular/forms";
 import { Plant } from "../interfaces/plant";
 
+const fakePlant: Plant = {
+  planteId : 'string',
+  nomLatin : 'string',
+  nomVariete : 'string',
+  nom : 'string',
+  categorie : 'string',
+  type_: 'string',
+  sousType: 'string'
+}
 @Component({
   selector: "app-room",
   templateUrl: "./guest.component.html",
@@ -32,7 +41,7 @@ export class GuestComponent implements OnInit {
     price: 0
   }
   public searchInput: string = 'hello';
-  public plants: Plant[] = [];
+  public plants: Plant[] = [fakePlant, fakePlant];
 
   public constructor(private communicationService: CommunicationService) {
   }
