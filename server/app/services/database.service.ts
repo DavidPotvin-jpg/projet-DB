@@ -5,6 +5,7 @@ import { Room } from "../../../common/tables/Room";
 import { Hotel } from "../../../common/tables/Hotel";
 import { Gender, Guest } from "../../../common/tables/Guest";
 import { DatabaseQuery } from "./constants/querries/sql-querries";
+import { Variety } from "../interfaces/variety";
 
 @injectable()
 export class DatabaseService {
@@ -23,28 +24,74 @@ export class DatabaseService {
 
 
   // US
+  // public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
+  //   try {
+  //     const client = await this.pool.connect();
+  //     const res = await client.query(DatabaseQuery.getGardenContent, [gardenId]);
+  //     console.table(res);
+  //     client.release()
+  //     return res;
+  //   }
+  //   catch(error){
+  //     console.info(error);
+  //     return error;
+  //   }
+  // }
+  
+  public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
+    return await this.executeQuery(DatabaseQuery.getAllTable + `${tableName} ;`);
+  }
   public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
+    return await this.executeQuery(DatabaseQuery.getGardenContent, [...arguments]);
+  }
+  public async getVarietyDetails(varietyName: string): Promise<pg.QueryResult> {
+    return await this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);
+  }
+  public async insertVariety(variety: Variety): Promise<pg.QueryResult> {
+      return await this.executeQuery(DatabaseQuery.insertVariety, [variety.nom, variety.anneeDeMiseEnMarche, variety.descriptionsSemis,
+        variety.plantation, variety.entretien, variety.recolte, variety.periodeMiseEnPlace,
+        variety.periodeRecolte, variety.commentaireGenerale]);
+  }
+  public async updateVariety(variety: Variety): Promise<pg.QueryResult> {
+      return await this.executeQuery(
+        DatabaseQuery.updateVarietyInformation, 
+        [variety.nom, variety.anneeDeMiseEnMarche, variety.descriptionsSemis,
+         variety.plantation, variety.entretien, variety.recolte, variety.periodeMiseEnPlace,
+         variety.periodeRecolte, variety.commentaireGenerale]);
+  }
+  public async deleteVariety(varietyName: string): Promise<pg.QueryResult> {
+    console.info('delete variety');
+    return await  this.executeQuery(DatabaseQuery.deleteVariety, [varietyName]);
+
+  }
+  public async searchVariety(nameContent: string): Promise<pg.QueryResult> {
+    return await  this.executeQuery(`${DatabaseQuery.searchVariety} '%${nameContent}%';`);
+  }
+  public async searchPlant(nameContent: string): Promise<pg.QueryResult> {
+    return await this.executeQuery(`${DatabaseQuery.searchPlant} '%${nameContent}%';`);
+  }
+  private async executeQuery(query: string, data?: any): Promise<pg.QueryResult> {
     try {
+      console.info(query);
       const client = await this.pool.connect();
-      const res = await client.query(DatabaseQuery.getGardenContent, [gardenId]);
-      console.table(res);
+      const res =  data? await client.query(query, data) : await client.query(query);
       client.release()
       return res;
-    }
-    catch(error){
-      console.info(error);
+
+    } catch(error) {
+      console.table(error);
       return error;
     }
   }
-  
+
   // ======= DEBUG =======
-  public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
+  // public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
     
-    const client = await this.pool.connect();
-    const res = await client.query(`SELECT * FROM bdschema.${tableName};`);
-    client.release()
-    return res;
-  }
+  //   const client = await this.pool.connect();
+  //   const res = await client.query(`SELECT * FROM bdschema.${tableName};`);
+  //   client.release()
+  //   return res;
+  // }
 
   public async getTime() {
     const client = await this.pool.connect();
