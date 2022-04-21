@@ -1,10 +1,10 @@
 export interface Garden {
-    gardenId: string;
-    name: string;
-    area: number;
-    isVegetableGarden: boolean;
-    typeSol: string;
-    isOrchardGarden: boolean;
-    maxHeight: number;
-    isOrnament: boolean;
+    jardinid: string;
+    typesol: string;
+    nom: string;
+    surface: number;
+    estpotager: boolean;
+    estverger: boolean;
+    hauteurmax: number;
+    estornement: boolean;
 };

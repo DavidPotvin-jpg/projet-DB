@@ -15,19 +15,17 @@
       <th class="contentCell">estOrnement</th>
     </thead>
     <tbody>
-      <tr class="blank_row" *ngFor="let garden of gardens; let i = index">
-          <td class="contentCell"> {{garden.gardenId}} </td>
-          <td class="contentCell"> {{garden.name}}</td>
-          <td class="contentCell"> {{garden.area}}</td>
-          <td class="contentCell"> {{garden.isVegetableGarden}}</td>
-          <td class="contentCell"> {{garden.typeSol}}</td>
-          <td class="contentCell"> {{garden.isOrchardGarden}}</td>
-          <td class="contentCell"> {{garden.maxHeight}}</td>
-          <td class="contentCell"> {{garden.isOrnament}}</td>
+      <tr class="blank_row" *ngFor="let garden of gardens;">
+          <td class="contentCell"> {{garden.jardinid}} </td>
+          <td class="contentCell"> {{garden.nom}}</td>
+          <td class="contentCell"> {{garden.surface}}</td>
+          <td class="contentCell"> {{garden.estpotager}}</td>
+          <td class="contentCell"> {{garden.typesol}}</td>
+          <td class="contentCell"> {{garden.estverger}}</td>
+          <td class="contentCell"> {{garden.hauteurmax}}</td>
+          <td class="contentCell"> {{garden.estornement}}</td>
       </tr>
-
-
     </tbody>
   </table>
-
+  
 </div>
