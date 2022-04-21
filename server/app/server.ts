@@ -59,7 +59,7 @@ export class Server {
   private onListening(): void {
     const addr: string | AddressInfo | null = this.server.address();
     if (!addr) { 
-      console.info('server adress is null'); 
+      console.table('server adress is null'); 
       return;
     }
     const bind: string = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
