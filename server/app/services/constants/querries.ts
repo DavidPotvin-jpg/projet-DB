@@ -5,8 +5,8 @@ export enum DatabaseQuery {
     searchPlant = "SELECT * FROM bdschema.Plante WHERE nom LIKE",
                             
     insertVariety= "INSERT INTO bdschema.Variete(nom, anneeDeMiseEnMarche, descriptionsSemis, plantation, entretien, recolte, periodeMiseEnPlace, periodeRecolte, commentaireGenerale) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);",
-    // deleteVariety = "DELETE * FROM bdschema.Variete WHERE nom = $1;",
-    deleteVariety = '',
+    deleteVariety = "DELETE FROM bdschema.Variete WHERE nom = '$1';",
+    // deleteVariety = '',
     searchVariety = "SELECT * FROM bdschema.Variete WHERE nom LIKE",
     updateVarietyInformation = `UPDATE bdschema.Variete
                                 SET anneeDeMiseEnMarche = $2, descriptionsSemis = $3, plantation = $4, 
