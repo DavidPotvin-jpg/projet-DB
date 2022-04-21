@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "hotels", component: HotelComponent },
   { path: "guests", component: GuestComponent },
 ];
-
+// TODO path : plants, gardens, varieties
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
