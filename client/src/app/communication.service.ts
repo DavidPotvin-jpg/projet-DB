@@ -58,7 +58,7 @@ export class CommunicationService {
   
   public searchPlant(nameContent: string): Observable<Plant[]> {
     return this.http
-      .get<Plant[]>(`${this.BASE_URL}/plants/names/:name`)
+      .get<Plant[]>(`${this.BASE_URL}/plants/names/${nameContent}`)
       .pipe(catchError(this.handleError<Plant[]>('searchPlant')));
   }
 
