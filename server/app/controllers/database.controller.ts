@@ -24,7 +24,6 @@ export class DatabaseController {
      router.delete("/varieties/:name", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const name = req.params.name;
-        // const toDelete = await this.databaseService.getVarietyDetails(name);
         await this.databaseService.deleteVariety(name);
         res.sendStatus(204);
       } catch(error) {
