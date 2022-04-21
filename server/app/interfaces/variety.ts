@@ -1,6 +1,6 @@
 export interface Variety {
     nom: string;
-    anneeDeMiseEnMarche: string;
+    anneeDeMiseEnMarche: number;
     descriptionsSemis: string;
     plantation: string;
     entretien: string;
