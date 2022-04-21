@@ -3,6 +3,8 @@ import { HotelPK } from "../../../../common/tables/HotelPK";
 import { Room } from "../../../../common/tables/Room";
 import { Guest } from "../../../../common/tables/Guest";
 import { CommunicationService } from "../communication.service";
+import { FormGroup } from "@angular/forms";
+import { Plant } from "../interfaces/plant";
 
 @Component({
   selector: "app-room",
@@ -16,7 +18,8 @@ export class GuestComponent implements OnInit {
 
   public duplicateError: boolean = false;
   public invalidHotelPK: boolean = false;
-
+  
+  public chatForm: FormGroup;
   public selectedHotel: HotelPK = {
     hotelnb: "-1",
     name: "placeholderHotel",
@@ -28,8 +31,11 @@ export class GuestComponent implements OnInit {
     type: "",
     price: 0
   }
+  public searchInput: string = 'hello';
+  public plants: Plant[] = [];
 
-  public constructor(private communicationService: CommunicationService) {}
+  public constructor(private communicationService: CommunicationService) {
+  }
 
   public ngOnInit(): void {
     this.communicationService.getHotelPKs().subscribe((hotelPKs: HotelPK[]) => {
@@ -70,4 +76,10 @@ export class GuestComponent implements OnInit {
         this.guests = guests;
       });
   }
+  public searchPlant() {
+    this.communicationService.searchPlant(this.searchInput).subscribe( (plants: Plant[]) => {
+      this.plants = plants;
+    });
+  }
+
 }
