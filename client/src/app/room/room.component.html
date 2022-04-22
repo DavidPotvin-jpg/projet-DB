@@ -8,9 +8,9 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="hotelSelect">Hotel</label>
       </div>
-      <select class="custom-select" id="hotelSelect" (change)="updateSelectedHotel($event.target.options.selectedIndex)">
-        <option *ngFor="let hotel of hotelPKs">{{ hotel.name }}</option>
-      </select>
+      <!-- <select class="custom-select" id="hotelSelect" (change)="updateSelectedHotel($event.target.options.selectedIndex)"> -->
+        <!-- <option *ngFor="let hotel of hotelPKs">{{ hotel.name }}</option> -->
+      <!-- </select> -->
     </div>
   </div>
 
@@ -48,5 +48,5 @@
     </tbody>
   </table>
 
-  <button type="button" class="btn" (click)="insertRoom()">+</button>
+  <button type="button" class="btn">+</button>
 </div>

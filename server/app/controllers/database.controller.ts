@@ -50,6 +50,7 @@ export class DatabaseController {
     router.get("/varieties", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const varietyRowContents = await this.databaseService.getAllFromTable('Variete');
+        console.info(varietyRowContents);
         res.json([...varietyRowContents.rows]);
         
       } catch (error) {

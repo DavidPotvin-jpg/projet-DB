@@ -15,7 +15,6 @@ export class VarietyModifyComponent implements OnInit {
   constructor(private communicationService: CommunicationService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.info('init');
     this.getVarieties();
   }
 

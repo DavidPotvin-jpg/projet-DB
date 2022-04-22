@@ -3,6 +3,7 @@ import { inject, injectable } from "inversify";
 import { AddressInfo } from "net";
 import { Application } from "./app";
 import { DatabaseService } from "./services/database.service";
+// import { DatabaseService } from "./services/database.service";
 import Types from "./types";
 
 @injectable()
@@ -65,6 +66,7 @@ export class Server {
     const bind: string = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
     // tslint:disable-next-line:no-console
     console.log(`Listening on ${bind}`);
+    console.info('console info working');
     const dbService = new DatabaseService();
     dbService.getGardenContent('1').then((obj) => {console.table(obj.rows);});
   }

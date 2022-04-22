@@ -31,27 +31,7 @@ export class RoomComponent implements OnInit {
   public constructor(private communicationService: CommunicationService) {}
 
   public ngOnInit(): void {
-    this.communicationService.getHotelPKs().subscribe((hotelPKs: HotelPK[]) => {
-      this.hotelPKs = hotelPKs;
-      this.selectedHotel = this.hotelPKs[0];
-      this.getRooms();
-    });
-
     this.getVarieties();
-  }
-
-  public updateSelectedHotel(hotelID: any) {
-    this.selectedHotel = this.hotelPKs[hotelID];
-    this.getRooms();
-    this.refresh();
-  }
-
-  public getRooms(): void {
-    this.communicationService
-      .getRooms(this.selectedHotel.hotelnb)
-      .subscribe((rooms: Room[]) => {
-        this.rooms = rooms;
-      });
   }
 
   public getVarieties() {
@@ -60,51 +40,5 @@ export class RoomComponent implements OnInit {
     .subscribe((varieties: Variety[]) => {
       this.varieties = varieties;
     });
-  }
-
-  private refresh() {
-    this.getRooms();
-    this.newRoomNb.nativeElement.innerText = "";
-    this.newRoomType.nativeElement.innerText = "";
-    this.newRoomPrice.nativeElement.innerText = "";
-  }
-
-  public changeRoomType(event: any, i: number) {
-    const editField = event.target.textContent;
-    this.rooms[i].type = editField;
-  }
-
-  public changeRoomPrice(event: any, i: number) {
-    const editField = event.target.textContent;
-    this.rooms[i].price = editField;
-  }
-
-  public deleteRoom(hotelNb: string, roomNb: string) {
-    this.communicationService
-      .deleteRoom(hotelNb, roomNb)
-      .subscribe((res: any) => {
-        this.refresh();
-      });
-  }
-
-  public insertRoom(): void {
-    const room: Room = {
-      hotelnb: this.selectedHotel.hotelnb,
-      roomnb: this.newRoomNb.nativeElement.innerText,
-      type: this.newRoomType.nativeElement.innerText,
-      price: this.newRoomPrice.nativeElement.innerText,
-    };
-
-    this.communicationService.insertRoom(room).subscribe((res: number) => {
-      this.refresh();
-    });
-  }
-
-  public updateRoom(i: number) {
-    this.communicationService
-      .updateRoom(this.rooms[i])
-      .subscribe((res: any) => {
-        this.refresh();
-      });
   }
 }
