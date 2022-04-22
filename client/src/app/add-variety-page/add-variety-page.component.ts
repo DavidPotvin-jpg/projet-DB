@@ -61,7 +61,8 @@ export class AddVarietyPageComponent implements OnInit {
     this.variety.anneedemiseenmarche > 0 &&
     this.variety.descriptionssemis.length > 0 &&
      this.variety.plantation.length > 0 && this.variety.plantation.length <= 50 &&
-     this.variety.entretien.length > 0 && this.variety.entretien.length <= 50);
+     this.variety.entretien.length > 0 && this.variety.entretien.length <= 50 && 
+     this.variety.recolte.length > 0 && this.variety.recolte.length <= 50);
   }
   
   clearVariety() {
