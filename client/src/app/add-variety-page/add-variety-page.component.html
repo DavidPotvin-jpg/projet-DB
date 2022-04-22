@@ -35,7 +35,7 @@
              </select><br>
 
         <label for="fcomments " placeholder="ex : Il faut lui donner beaucoup d'eau">Commentaires:</label><br>
-        <textarea type="text " id="fcomments " name="fcomments " [(ngModel)]="variety.commentairegenerale">arise</textarea><br>
+        <textarea type="text " id="fcomments " name="fcomments " [(ngModel)]="variety.commentairegenerale" placeholder="optionnel">arise</textarea><br>
 
         <button (click)="addVariety() " [disabled]="!isFormFilled()">Ajouter</button>
     </form>

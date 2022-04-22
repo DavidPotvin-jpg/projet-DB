@@ -15,12 +15,12 @@ export class AddVarietyPageComponent implements OnInit {
   public varietyUploaded: boolean;
   constructor(private communicationService: CommunicationService) {
     this.variety = {
-      nom: '',
+      nom: 'Legumieres',
       anneedemiseenmarche: 2022,
-      descriptionssemis: '',
-      plantation: '',
-      entretien: '',
-      recolte: '',
+      descriptionssemis: 'Terre souple',
+      plantation: 'Hautes herbes du Sud',
+      entretien: 'Une fois par jour',
+      recolte: 'Le soir',
       periodemiseEnPlace: '',
       perioderecolte: '',
       commentairegenerale: '',
