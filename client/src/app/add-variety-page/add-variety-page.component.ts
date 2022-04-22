@@ -40,6 +40,7 @@ export class AddVarietyPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   addVariety(): void {
     this.errorMessage = '';
     this.variety.periodemiseEnPlace = this.seasons[this.selectedSetupPeriod].name;

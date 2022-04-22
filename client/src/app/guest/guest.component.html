@@ -1,50 +1,30 @@
 <div id="guest">
-    <h1>Guests</h1>
+    <h1>Rechercher une plante</h1>
 
     <div class="divider"></div>
 
-    <div class="container contentSelect">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="hotelSelect">Hotel</label>
-            </div>
-            <select class="custom-select" id="hotelSelect" (change)="updateSelectedHotel($event.target.options.selectedIndex)">
-        <option *ngFor="let hotel of hotelPKs">{{ hotel.name }}</option>
-      </select>
-        </div>
+    <!-- <input type="text" placeholder="Rechercher une plante par son nom..."> -->
+    <input placeholder="Rechercher une plante par son nom" [(ngModel)]="searchInput" class="search-input"><button (click)="searchPlant()" class="search-button">Rechercher</button>
+    <div *ngIf="this.plants.length > 0">
+        <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+            <thead class="header">
+                <th class="contentCell">nom latin</th>
+                <th class="contentCell">nom variété</th>
+                <th class="contentCell">nom</th>
+                <th class="contentCell">catégorie</th>
+                <th class="contentCell">type</th>
+                <th class="contentCell">sous-type</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plant of plants">
+                    <td class="contentCell">{{ plant.nomlatin }}</td>
+                    <td class="contentCell">{{ plant.nomvariete }}</td>
+                    <td class="contentCell">{{ plant.nom }}</td>
+                    <td class="contentCell">{{ plant.categorie }}</td>
+                    <td class="contentCell">{{ plant.type_ }}</td>
+                    <td class="contentCell">{{ plant.soustype }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-    <div class="container contentSelect">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="roomSelect">Room</label>
-            </div>
-            <select class="custom-select" id="roomSelect" (change)="updateSelectedRoom($event.target.options.selectedIndex)">
-        <option *ngFor="let room of rooms">{{ room.roomnb }}</option>
-      </select>
-        </div>
-    </div>
-
-    <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
-        <thead class="header">
-            <th class="contentCell">nom latin</th>
-            <th class="contentCell">nom variété</th>
-            <th class="contentCell">nom</th>
-            <th class="contentCell">catégorie</th>
-            <th class="contentCell">type</th>
-            <th class="contentCell">sous-type</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let plant of plants">
-                <td class="contentCell">{{ plant.nomlatin }}</td>
-                <td class="contentCell">{{ plant.nomvariete }}</td>
-                <td class="contentCell">{{ plant.nom }}</td>
-                <td class="contentCell">{{ plant.categorie }}</td>
-                <td class="contentCell">{{ plant.type_ }}</td>
-                <td class="contentCell">{{ plant.soustype }}</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
-<!-- <input type="text" placeholder="Rechercher une plante par son nom..."> -->
-<input placeholder="Rechercher une plante par son nom" [(ngModel)]="searchInput" class="search-input"><button (click)="searchPlant()">Rechercher</button>
