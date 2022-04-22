@@ -1,0 +1,31 @@
+.success-container {
+    background-color: #def2d8;
+    border: 1px solid #748b6e;
+    border-radius: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    min-height: 40px;
+    width: 50%;
+}
+
+.success-container mat-icon {
+    padding-left: 8px;
+    color: #748b6e;
+}
+
+.add-variety input,
+.add-variety label,
+.add-variety textarea,
+.add-variety select * {
+    font-size: 24px;
+}
+
+.add-variety {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
