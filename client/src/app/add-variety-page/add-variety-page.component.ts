@@ -35,19 +35,43 @@ export class AddVarietyPageComponent implements OnInit {
   ngOnInit(): void {
   }
   addVariety(): void {
-    console.log(this.selectedSetupPeriod);
-    console.log(this.selectedHarvestPeriod);
     this.variety.periodemiseEnPlace = this.seasons[this.selectedSetupPeriod].name;
     this.variety.perioderecolte = this.seasons[this.selectedHarvestPeriod].name;
-    console.log(this.variety);
+    if (!this.isFormFilled()) return;
+    this.clearVariety();
   }
-
-  // selectOption(id: number) {
-  //   this.selectedSetupPeriod = id;
-  //   //getted from event
-  //   console.log(id);
-  //   //getted from binding
-  //   console.log(this.selectedSetupPeriod)
-  // }
-
+  isFormFilled(): boolean {
+    return (this.variety.nom.length > 0 &&
+    this.variety.anneedemiseenmarche > 0 &&
+    this.variety.descriptionssemis.length > 0 &&
+     this.variety.plantation.length > 0 && this.variety.recolte.length > 0);
+  }
+  
+  clearVariety() {
+    this.selectedSetupPeriod = 1;
+    this.selectedHarvestPeriod = 1;
+    this.variety = {
+      nom: '',
+      anneedemiseenmarche: 2022,
+      descriptionssemis: '',
+      plantation: '',
+      entretien: '',
+      recolte: '',
+      periodemiseEnPlace: '',
+      perioderecolte: '',
+      commentairegenerale: '',
+    }
+  }
 }
+
+// this.variety = {
+//   nom: '',
+//   anneedemiseenmarche: 2022,
+//   descriptionssemis: '',
+//   plantation: '',
+//   entretien: '',
+//   recolte: '',
+//   periodemiseEnPlace: '',
+//   perioderecolte: '',
+//   commentairegenerale: '',
+// }
