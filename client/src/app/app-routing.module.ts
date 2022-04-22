@@ -7,6 +7,7 @@ import { RoomComponent } from "./room/room.component";
 import { GuestComponent } from "./guest/guest.component";
 import { VarietyHomeComponent } from "./variety-home/variety-home.component";
 import { VarietyModifyComponent } from "./variety-modify/variety-modify.component";
+import { AddVarietyPageComponent } from './add-variety-page/add-variety-page.component';
 
 const routes: Routes = [
   { path: "app", component: AppComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "guests", component: GuestComponent },
   { path: "variety-home", component: VarietyHomeComponent},
   { path: "variety-modify", component: VarietyModifyComponent},
+  { path: "variety-add", component: AddVarietyPageComponent},
 ];
 // TODO path : plants, gardens, varieties
 @NgModule({

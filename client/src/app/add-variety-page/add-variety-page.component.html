@@ -1,0 +1,51 @@
+<div id="guest">
+    <h1>Guests</h1>
+
+    <div class="divider"></div>
+
+    <div class="container contentSelect">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="hotelSelect">Hotel</label>
+            </div>
+        </div>
+    </div>
+    <p>anrstars</p>
+    <form>
+        <label for="fname">nom variété:</label><br>
+        <input type="text" id="fname" name="fname" [(ngModel)]="variety.nom"><br>
+
+        <label for="fyear">Annee de mise en marche:</label><br>
+        <input type="number" min="1900" max="2022" step="1" id="fyear" name="fyear" [(ngModel)]="variety.anneedemiseenmarche"><br>
+
+        <label for="fdescription">Description de semis:</label><br>
+        <textarea type="text" id="fdescription" name="fdescription" [(ngModel)]="variety.descriptionssemis"></textarea><br>
+
+        <label for=" fplantation ">Plantation:</label><br>
+        <input type="text " id="fplantation " name="fplantation " [(ngModel)]="variety.plantation"><br>
+
+        <label for="fentretien ">Entretien:</label><br>
+        <input type="text " id="fentretien " name="fentretien " [(ngModel)]="variety.entretien"><br>
+
+        <label for="frecolte ">Récolte:</label><br>
+        <input type="text " id="frecolte " name="frecolte " [(ngModel)]="variety.recolte"><br>
+
+        <label for="fsetUpPeriod ">Période de mise en place:</label><br>
+        <input type="text " id="fsetUpPeriod " name="fsetUpPeriod " [(ngModel)]="variety.periodemiseEnPlace"><br>
+        <select [(ngModel)]="selectedSetupPeriod">
+          <option [value]="item.id" *ngFor="let item of seasons">{{item.name}}</option>
+           </select>
+
+        <label for="fharvestPeriod ">Période de recolte:</label><br>
+        <input type="text " id="fharvestPeriod " name="fharvestPeriod " [(ngModel)]="variety.perioderecolte"><br>
+        <select [(ngModel)]="selectedHarvestPeriod">
+            <option [value]="item.id" *ngFor="let item of seasons">{{item.name}}</option>
+             </select>
+
+
+        <label for="fcomments ">Commentaires:</label><br>
+        <textarea type="text " id="fcomments " name="fcomments " [(ngModel)]="variety.commentairegenerale">arise</textarea><br>
+
+        <button (click)="addVariety() ">Ajouter</button>
+    </form>
+</div>

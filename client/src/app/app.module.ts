@@ -11,6 +11,7 @@ import { HotelComponent } from "./hotel/hotel.component";
 import { RoomComponent } from "./room/room.component";
 import { VarietyHomeComponent } from "./variety-home/variety-home.component";
 import { VarietyModifyComponent } from './variety-modify/variety-modify.component';
+import { AddVarietyPageComponent } from './add-variety-page/add-variety-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { VarietyModifyComponent } from './variety-modify/variety-modify.componen
     GuestComponent,
     VarietyHomeComponent,
     VarietyModifyComponent,
+    AddVarietyPageComponent,
   ],
   imports: [
     CommonModule,
