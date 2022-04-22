@@ -1,48 +1,49 @@
-<div id="guest">
+<div id="guest" class="add-variety">
     <h1>Ajouter une variété</h1>
 
     <div class="divider"></div>
-
-    <div class="container contentSelect">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="hotelSelect">Hotel</label>
-            </div>
-        </div>
+    <div class="success-container" *ngIf="varietyUploaded">
+        <div class="success">Votre variété a été ajoutée à la DB</div>
     </div>
-    <p>anrstars</p>
+    <div class="error-container" *ngIf="errorMessage">
+        <div class="error-message">{{errorMessage}</div>
+    </div>
     <form>
         <label for="fname">nom variété:</label><br>
-        <input type="text" id="fname" name="fname" [(ngModel)]="variety.nom"><br>
+        <input type="text" id="fname" name="fname" [(ngModel)]="variety.nom" placeholder="ex : Legumieres"><br>
+        <label for="fname" *ngIf="variety.nom.length < 1 || variety.nom.length > 30" class="error">Ce champ doit avoir entre 1 et 30 characteres</label><br>
 
         <label for="fyear">Annee de mise en marche:</label><br>
         <input type="number" onKeyDown="return false" min="1900" max="2022" step="1" id="fyear" name="fyear" [(ngModel)]="variety.anneedemiseenmarche"><br>
 
         <label for="fdescription">Description de semis:</label><br>
-        <textarea type="text" id="fdescription" name="fdescription" [(ngModel)]="variety.descriptionssemis"></textarea><br>
+        <textarea type="text" id="fdescription" name="fdescription" [(ngModel)]="variety.descriptionssemis" placeholder="ex : Terre souple"></textarea><br>
+        <label for="fname" *ngIf="variety.descriptionssemis.length < 1" class="error">Ce champ ne doit pas être vide</label><br>
 
         <label for=" fplantation ">Plantation:</label><br>
-        <input type="text " id="fplantation " name="fplantation " [(ngModel)]="variety.plantation"><br>
+        <input type="text " id="fplantation " name="fplantation " [(ngModel)]="variety.plantation" placeholder="ex : Hautes herbes"><br>
+        <label for="fname" *ngIf="variety.plantation.length < 1 || variety.plantation.length > 50" class="error">Ce champ doit avoir entre 1 et 100 characteres</label><br>
 
         <label for="fentretien ">Entretien:</label><br>
-        <input type="text " id="fentretien " name="fentretien " [(ngModel)]="variety.entretien"><br>
+        <input type="text " id="fentretien " name="fentretien " [(ngModel)]="variety.entretien" placeholder="ex : Une fois par jour"><br>
+        <label for="fname" *ngIf="variety.entretien.length < 1 || variety.entretien.length > 50" class="error">Ce champ doit avoir entre 1 et 100 characteres</label><br>
 
         <label for="frecolte ">Récolte:</label><br>
-        <input type="text " id="frecolte " name="frecolte " [(ngModel)]="variety.recolte"><br>
+        <input type="text " id="frecolte " name="frecolte " [(ngModel)]="variety.recolte" placeholder="ex : Le soir"><br>
+        <label for="fname" *ngIf="variety.recolte.length < 1 || variety.recolte.length > 100" class="error">Ce champ doit avoir entre 1 et 100 characteres</label><br>
 
         <label for="fsetUpPeriod ">Période de mise en place:</label><br>
         <select [(ngModel)]="selectedSetupPeriod">
           <option [value]="item.id" *ngFor="let item of seasons">{{item.name}}</option>
-           </select>
+           </select><br>
 
         <label for="fharvestPeriod ">Période de recolte:</label><br>
         <select [(ngModel)]="selectedHarvestPeriod">
             <option [value]="item.id" *ngFor="let item of seasons">{{item.name}}</option>
-             </select>
+             </select><br>
 
-
-        <label for="fcomments ">Commentaires:</label><br>
-        <textarea type="text " id="fcomments " name="fcomments " [(ngModel)]="variety.commentairegenerale">arise</textarea><br>
+        <label for="fcomments " placeholder="ex : Il faut lui donner beaucoup d'eau">Commentaires:</label><br>
+        <textarea type="text " id="fcomments " name="fcomments " [(ngModel)]="variety.commentairegenerale" placeholder="optionnel">arise</textarea><br>
 
         <button (click)="addVariety() " [disabled]="!isFormFilled()">Ajouter</button>
     </form>
