@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Garden } from 'src/app/interfaces/garden';
-import { RowContent } from 'src/app/interfaces/row-content';
+import { GardenContent } from 'src/app/interfaces/garden-content';
 import { CommunicationService } from 'src/app/communication.service';
 
 
@@ -11,9 +11,9 @@ import { CommunicationService } from 'src/app/communication.service';
   styleUrls: ['./jardin-details.component.css']
 })
 export class JardinDetailsComponent {
-  gardenContents: RowContent[];
+  gardenContent: GardenContent;
   constructor(@Inject(MAT_DIALOG_DATA) public garden: Garden, private dialogRef: MatDialogRef<JardinDetailsComponent>, private communicationService: CommunicationService) {
-    this.communicationService.getGarden(garden.jardinid).subscribe((content: RowContent[]) => this.gardenContents = content);
+    this.communicationService.getGardenContent(garden.jardinid).subscribe((content: GardenContent) => this.gardenContent = content);
   }
   
   closeDialog() {

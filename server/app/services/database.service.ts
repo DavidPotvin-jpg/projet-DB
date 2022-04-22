@@ -3,6 +3,7 @@ import * as pg from "pg";
 import "reflect-metadata";
 import { DatabaseQuery } from "./constants/querries/sql-querries";
 import { Variety } from "../interfaces/variety";
+import { GardenContent } from "../interfaces/garden-content";
 
 @injectable()
 export class DatabaseService {
@@ -22,8 +23,11 @@ export class DatabaseService {
   public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
     return await this.executeQuery(DatabaseQuery.getAllTable + `${tableName} ;`);
   }
-  public async getGardenContent(gardenId: string): Promise<pg.QueryResult> {
-    return await this.executeQuery(DatabaseQuery.getGardenContent, [...arguments]);
+  public async getGardenContent(gardenId: string): Promise<GardenContent> {
+    const rowContents = await this.executeQuery(DatabaseQuery.getRowContents, [...arguments]);
+    const concernedRows =  await this.executeQuery(DatabaseQuery.getAllTable + `Rang WHERE jardinId = ${gardenId} ;`);
+    const parcels = await this.executeQuery(DatabaseQuery.getAllTable + `Rang WHERE jardinId = ${gardenId} ;`);
+    return {rows: concernedRows.rows, rowContents: rowContents.rows, parcelles: parcels.rows };
   }
   public async getVarietyDetails(varietyName: string): Promise<pg.QueryResult> {
     return await this.executeQuery(DatabaseQuery.getVarietyDetails, [...arguments]);

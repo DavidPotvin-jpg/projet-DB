@@ -11,6 +11,7 @@ import { Variety } from "./interfaces/variety";
 import { Garden } from "./interfaces/garden";
 import { Plant } from "./interfaces/plant";
 import { RowContent } from "./interfaces/row-content";
+import {GardenContent} from "./interfaces/garden-content";
 @Injectable()
 export class CommunicationService {
   private readonly BASE_URL: string = "http://localhost:3000/database";
@@ -45,10 +46,10 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Variety[]>('getVarieties')));
   }
 
-  public getGarden(id: string): Observable<RowContent[]> {
+  public getGardenContent(id: string): Observable<GardenContent> {
     return this.http
-      .get<RowContent[]>(`${this.BASE_URL}/gardens/${id}`)
-      .pipe(catchError(this.handleError<RowContent[]>('getGardens')));
+      .get<GardenContent>(`${this.BASE_URL}/gardens/${id}`)
+      .pipe(catchError(this.handleError<GardenContent>('getGardens')));
   }
 
   public getAllGardens(): Observable<Garden[]> {

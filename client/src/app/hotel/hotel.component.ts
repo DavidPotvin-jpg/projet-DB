@@ -35,17 +35,8 @@ export class HotelComponent {
   }
   public getHotels(): void {
     this.communicationService.getAllGardens().subscribe((gardens: Garden[]) => {
-      // gardens.forEach((garden) => {
-      //   // this.gardens.push({jardinId: garden.jardinid, typeSol: garden.typesol, nom: garden.nom, surface: garden.surface, estPotager: garden.estpotager, estVerger: garden.estverger, estOrnement: garden.estornement, hauteurMax: garden.hauteurmax, })
-      //   console.table(garden);
-      //   console.info(garden.jardinid);
-      //   console.table({jardinId: garden.jardinId, typeSol: garden.typeSol, nom: garden.nom, surface: garden.surface, estPotager: garden.estPotager, estVerger: garden.estVerger, estOrnement: garden.estOrnement, hauteurMax: garden.hauteurMax, });
-      // })
-      // console.table(gardens);
       this.gardens = gardens;
-      // console.log(this.gardens);
     });
-    // this.gardens.push({jardinId: '0', typeSol: 'Sableux', nom: 'KillerQueen', surface: 69, estPotager: true, estVerger: false, estOrnement: false, hauteurMax: 420, })
   }
 
   }
