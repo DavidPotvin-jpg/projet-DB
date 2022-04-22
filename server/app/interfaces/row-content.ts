@@ -1,6 +1,6 @@
 export interface RowContent {
-	varietyName: string;
-	rowId: string;
+	varietyname: string;
+	rowid: string;
     gardenid: string;
     parcelid: string;
 	typeofestablishment: string;

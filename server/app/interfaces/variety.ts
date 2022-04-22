@@ -1,11 +1,11 @@
 export interface Variety {
     nom: string;
-    anneeDeMiseEnMarche: number;
-    descriptionsSemis: string;
+    anneedemiseenmarche: number;
+    descriptionssemis: string;
     plantation: string;
     entretien: string;
     recolte: string;
-    periodeMiseEnPlace: string;
-    periodeRecolte: string;
-    commentaireGenerale: string;
+    periodemiseenplace: string;
+    perioderecolte: string;
+    commentairegenerale: string;
 }

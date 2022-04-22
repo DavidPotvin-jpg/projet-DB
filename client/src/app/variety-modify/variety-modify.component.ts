@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { CommunicationService } from '../communication.service';
 import { Variety } from '../interfaces/variety';
-import { VarietyModifyPopupComponent } from './variety-modify-popup/variety-modify-popup.component';
 
 @Component({
   selector: 'app-variety-modify',
@@ -11,20 +9,42 @@ import { VarietyModifyPopupComponent } from './variety-modify-popup/variety-modi
 })
 export class VarietyModifyComponent implements OnInit {
   public varieties: Variety[] = [];
-  public selectedVariety: string = 'random Name';
-  constructor(private communicationService: CommunicationService, private dialog: MatDialog) { }
+  public selectedVariety: Variety| undefined = undefined;
+  public modifiedVariety: Variety = {
+    nom: '',
+    anneedemiseenmarche: 0,
+    descriptionssemis: 'description',
+    plantation: 'plantation',
+    entretien: 'entretien',
+    recolte: 'recolte',
+    periodemiseEnPlace: 'Automne',
+    perioderecolte: 'Hiver',
+    commentairegenerale: 'test',
+  };
+  constructor(private communicationService: CommunicationService) { }
 
   ngOnInit(): void {
     this.getVarieties();
   }
 
-  openModifyPopUp(variety: Variety) {
-    this.dialog.open(VarietyModifyPopupComponent, {
-      width: "1000px",
-      height: "1000px",
-      autoFocus: true,
-      data: variety,
-  });
+  isSelectedVariety(variety: Variety) {
+    return variety === this.selectedVariety;
+  }
+
+  selectVariety(variety: Variety) {
+    this.selectedVariety = variety;
+    this.modifiedVariety = {...variety};
+    console.table(this.modifiedVariety);
+  }
+
+  modifyVariety(variety: Variety) {
+    this.selectedVariety = undefined;
+    this.communicationService.patchVariety(variety.nom, variety).subscribe();
+    this.refresh();
+  }
+
+  private refresh() {
+    this.getVarieties();
   }
 
   private getVarieties() {

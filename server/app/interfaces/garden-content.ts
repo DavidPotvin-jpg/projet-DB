@@ -4,5 +4,5 @@ import { RowContent } from "./row-content";
 export interface GardenContent {
     parcelles: Parcelle[],
     rows: Row[],
-    rowContents: RowContent[],
+    rowcontents: RowContent[],
 }

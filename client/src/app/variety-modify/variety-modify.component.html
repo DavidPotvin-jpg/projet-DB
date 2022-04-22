@@ -3,9 +3,7 @@
   
     <table
       id="ht"
-      align="center"
-      border="1"
-      width="1000"
+
       class="table-striped table-hover"
     >
       <thead class="roomsheader">
@@ -23,15 +21,33 @@
       <tbody>
         <tr *ngFor="let variety of varieties; let i = index">
           <td class="contentCell">{{ variety.nom }}</td>
-          <td class="contentCell">{{ variety.anneedemiseenmarche }}</td>
-          <td class="contentCell">{{ variety.descriptionssemis }}</td>
-          <td class="contentCell">{{ variety.plantation }}</td>
-          <td class="contentCell">{{ variety.entretien }}</td>
-          <td class="contentCell">{{ variety.recolte }}</td>
-          <td class="contentCell">{{ variety.periodemiseenplace }}</td>
-          <td class="contentCell">{{ variety.perioderecolte }}</td>
-          <td class="contentCell">{{ variety.commentairegenerale }}</td>
-          <td class="actionCell"><button (click)="openModifyPopUp(variety)">Modifier</button></td>
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.anneedemiseenmarche }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.anneedemiseenmarche"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.descriptionssemis }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.descriptionssemis"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.plantation }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.plantation"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.entretien }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.entretien"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.recolte }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.recolte"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.periodemiseenplace }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.periodemiseenplace"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.perioderecolte }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.perioderecolte"></td>
+
+          <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.commentairegenerale }}</td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.commentairegenerale"></td>
+
+          <td class="actionCell" *ngIf="!selectedVariety"><button (click)="selectVariety(variety)">Modifier</button></td>
+          <td class="actionCell" *ngIf="isSelectedVariety(variety)"><button (click)="modifyVariety(modifiedVariety)">Confirmer</button></td>
+
         </tr>
       </tbody>
     </table>

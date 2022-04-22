@@ -39,7 +39,9 @@ export class DatabaseController {
     router.patch("/varieties/:name", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const updatedVariety: Variety = req.body;
+        console.table(updatedVariety);
         updatedVariety.nom = req.params.name;
+        console.table(updatedVariety);
         await this.databaseService.updateVariety(updatedVariety);
         res.status(204).send();
 
@@ -50,7 +52,7 @@ export class DatabaseController {
     });
     router.get("/varieties", async (req: Request, res: Response, _: NextFunction) => {
       try {
-        const varietyRowContents = await this.databaseService.getAllFromTable('Variete');
+        const varietyRowContents = await this.databaseService.getAllFromVariety();
         console.info(varietyRowContents);
         res.json([...varietyRowContents.rows]);
         
@@ -97,7 +99,8 @@ export class DatabaseController {
         // TODO: handle empty info
         const id = req.params.id;
         const gardenRowsContents = await this.databaseService.getGardenContent(id);
-        res.json([...gardenRowsContents.rows]);
+        console.table(gardenRowsContents);
+        res.json(gardenRowsContents);
         
       } catch (error) {
           console.error(error.message);

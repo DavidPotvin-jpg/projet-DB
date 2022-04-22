@@ -1,8 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Garden } from 'src/app/interfaces/garden';
 import { GardenContent } from 'src/app/interfaces/garden-content';
-import { CommunicationService } from 'src/app/communication.service';
 
 
 @Component({
@@ -11,9 +9,7 @@ import { CommunicationService } from 'src/app/communication.service';
   styleUrls: ['./jardin-details.component.css']
 })
 export class JardinDetailsComponent {
-  gardenContent: GardenContent;
-  constructor(@Inject(MAT_DIALOG_DATA) public garden: Garden, private dialogRef: MatDialogRef<JardinDetailsComponent>, private communicationService: CommunicationService) {
-    this.communicationService.getGardenContent(garden.jardinid).subscribe((content: GardenContent) => this.gardenContent = content);
+  constructor(@Inject(MAT_DIALOG_DATA) public gardenContent: GardenContent, private dialogRef: MatDialogRef<JardinDetailsComponent>) {
   }
   
   closeDialog() {

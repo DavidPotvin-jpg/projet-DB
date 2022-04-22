@@ -1,5 +1,5 @@
 <div id="dialog-header">
-    <h1 mat-dialog-title>{{ garden.nom }}</h1>
+    <h1 mat-dialog-title>Garden</h1>
 </div>
 <div mat-dialog-content class="goal-container">
     <header> Informations du jardin </header>
@@ -11,7 +11,7 @@
         <th class="contentCell">Type de mise en place</th>
       </thead>
       <tbody>
-        <tr class="blank_row" *ngFor="let rowContent of gardenContent.rowContents;">
+        <tr class="blank_row" *ngFor="let rowContent of gardenContent.rowcontents;">
           <td class="contentCell"> {{rowContent.nomvariete}} </td>
           <td class="contentCell"> {{rowContent.rangid}}</td>
           <td class="contentCell"> {{rowContent.parcelleid}}</td>

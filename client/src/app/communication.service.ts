@@ -31,8 +31,9 @@ export class CommunicationService {
   }
   
   public patchVariety(varietyName: string, variety: Variety): Observable<Variety> {
+    console.info(variety);
     return this.http
-      .patch<Variety>(`${this.BASE_URL}/varieties/${varietyName}`, {})
+      .patch<Variety>(`${this.BASE_URL}/varieties/${varietyName}`, variety)
       .pipe(catchError(this.handleError<Variety>('patchVariety')));
   }
   
