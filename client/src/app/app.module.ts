@@ -13,6 +13,7 @@ import { JardinDetailsComponent } from './hotel/jardin-details/jardin-details.co
 import { VarietyModifyPopupComponent } from './variety-modify/variety-modify-popup/variety-modify-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,

@@ -10,7 +10,6 @@ import { Guest } from "../../../common/tables/Guest";
 import { Variety } from "./interfaces/variety";
 import { Garden } from "./interfaces/garden";
 import { Plant } from "./interfaces/plant";
-import { RowContent } from "./interfaces/row-content";
 import {GardenContent} from "./interfaces/garden-content";
 @Injectable()
 export class CommunicationService {

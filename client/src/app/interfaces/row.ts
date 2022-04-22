@@ -1,9 +1,9 @@
 export interface Row {
     rangid: string,
-    jardinIid: string,
+    jardinid: string,
     parcelleid: string,
     coordonneex: string,
     coordonneey: string,
 	numero: number,
-	joursDeJachere: number,
+	joursdejachere: number,
 }
