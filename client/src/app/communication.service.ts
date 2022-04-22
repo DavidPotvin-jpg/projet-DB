@@ -25,6 +25,7 @@ export class CommunicationService {
   }
 
   public addVariety(variety: Variety) {
+    console.info(variety);
     return this.http.post<Variety>(`${this.BASE_URL}/varieties`, variety)
     .pipe(catchError(this.handleError<Variety>('addVariety')));
   }

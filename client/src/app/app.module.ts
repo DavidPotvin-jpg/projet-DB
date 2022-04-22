@@ -14,6 +14,7 @@ import { VarietyModifyPopupComponent } from './variety-modify/variety-modify-pop
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
+import { AddVarietyPageComponent } from './add-variety-page/add-variety-page.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BrowserModule } from "@angular/platform-browser";
     GuestComponent,
     VarietyHomeComponent,
     VarietyModifyComponent,
+    AddVarietyPageComponent,
     JardinDetailsComponent,
     VarietyModifyPopupComponent,
   ],

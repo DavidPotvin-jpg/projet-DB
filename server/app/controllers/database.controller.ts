@@ -28,6 +28,7 @@ export class DatabaseController {
     router.post("/varieties", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const variety: Variety = req.body;
+        console.info(variety);
         await this.databaseService.insertVariety(variety);
         res.status(200).send('variety inserted');
       } catch(error) {
