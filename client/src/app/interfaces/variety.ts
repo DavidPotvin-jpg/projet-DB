@@ -5,7 +5,7 @@ export interface Variety {
     plantation: string;
     entretien: string;
     recolte: string;
-    periodemiseEnPlace: string;
+    periodemiseenplace: string;
     perioderecolte: string;
     commentairegenerale: string;
 }

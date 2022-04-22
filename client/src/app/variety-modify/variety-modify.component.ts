@@ -17,7 +17,7 @@ export class VarietyModifyComponent implements OnInit {
     plantation: 'plantation',
     entretien: 'entretien',
     recolte: 'recolte',
-    periodemiseEnPlace: 'Automne',
+    periodemiseenplace: 'Automne',
     perioderecolte: 'Hiver',
     commentairegenerale: 'test',
   };
@@ -39,8 +39,9 @@ export class VarietyModifyComponent implements OnInit {
 
   modifyVariety(variety: Variety) {
     this.selectedVariety = undefined;
-    this.communicationService.patchVariety(variety.nom, variety).subscribe();
-    this.refresh();
+    this.communicationService.patchVariety(variety.nom, variety).subscribe(() => {
+      this.refresh();
+    });
   }
 
   private refresh() {

@@ -13,8 +13,9 @@ export class AddVarietyPageComponent implements OnInit {
   public selectedSetupPeriod: number;
   public selectedHarvestPeriod: number;
   public varietyUploaded: boolean;
-  public serverVarieties: Variety[];
+  // public serverVarieties: Variety[];
   public errorMessage: string;
+  public isUnique: boolean;
   constructor(private communicationService: CommunicationService) {
     this.variety = {
       nom: 'Legumieres',
@@ -23,7 +24,7 @@ export class AddVarietyPageComponent implements OnInit {
       plantation: 'Hautes herbes du Sud',
       entretien: 'Une fois par jour',
       recolte: 'Le soir',
-      periodemiseEnPlace: '',
+      periodemiseenplace: '',
       perioderecolte: '',
       commentairegenerale: '',
   }
@@ -34,27 +35,20 @@ export class AddVarietyPageComponent implements OnInit {
     this.selectedSetupPeriod = 1;
     this.selectedHarvestPeriod = 1;
     this.varietyUploaded = false;
-    this.serverVarieties = [];
+    // this.serverVarieties = [];
     this.errorMessage = '';
    }
 
   ngOnInit(): void {
   }
   addVariety(): void {
-    this.errorMessage = '';
-    this.variety.periodemiseEnPlace = this.seasons[this.selectedSetupPeriod].name;
+    this.variety.periodemiseenplace = this.seasons[this.selectedSetupPeriod].name;
     this.variety.perioderecolte = this.seasons[this.selectedHarvestPeriod].name;
     if (!this.isFormFilled()) {
       this.varietyUploaded = false;
       return;
     }
-    if (!this.isVarietyUnique(this.variety.nom)) {
-      this.errorMessage = 'Le nom de cette variété existe déjà dans la base de donnnées';
-      return;
-    }
-    this.communicationService.addVariety(this.variety).subscribe();
-    this.varietyUploaded = true;
-    this.clearVariety();
+    this.isVarietyUnique(this.variety.nom)
   }
   isFormFilled(): boolean {
     return (this.variety.nom.length > 1 && this.variety.nom.length <= 30 &&
@@ -74,7 +68,7 @@ export class AddVarietyPageComponent implements OnInit {
       plantation: 'Hautes herbes du Sud',
       entretien: 'Une fois par jour',
       recolte: 'Le soir',
-      periodemiseEnPlace: '',
+      periodemiseenplace: '',
       perioderecolte: '',
       commentairegenerale: '',
     }
@@ -82,10 +76,22 @@ export class AddVarietyPageComponent implements OnInit {
 
   isVarietyUnique(varietyName: string) {
     this.communicationService.getVarieties().subscribe( (result) => {
-      this.serverVarieties = result;
+      const serverVarieties = result;
+      // if (!this.serverVarieties) return false;
+      const varietyDoubled = serverVarieties.find(element => element.nom === varietyName);
+      this.isUnique = varietyDoubled === undefined;
+      if (this.isUnique) {
+        this.communicationService.addVariety(this.variety).subscribe(() => {
+          this.varietyUploaded = true;
+          this.clearVariety();
+        });
+        this.errorMessage = '';
+      }
+      else {
+        this.errorMessage = 'Le nom de cette variété existe déjà dans la base de donnnées';
+        this.varietyUploaded = false;
+      }
     });
-    if (!this.serverVarieties) return false;
-    const result = this.serverVarieties.find(element => element.nom === varietyName);
-    return result === undefined;
+
   }
 }

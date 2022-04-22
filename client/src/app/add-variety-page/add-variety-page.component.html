@@ -5,8 +5,8 @@
     <div class="success-container" *ngIf="varietyUploaded">
         <div class="success">Votre variété a été ajoutée à la DB</div>
     </div>
-    <div class="error-container" *ngIf="errorMessage">
-        <div class="error-message">{{errorMessage}</div>
+    <div class="error-container" *ngIf="errorMessage.length > 0">
+        <div class="error-message">{{errorMessage}}</div>
     </div>
     <form>
         <label for="fname">nom variété:</label><br>
