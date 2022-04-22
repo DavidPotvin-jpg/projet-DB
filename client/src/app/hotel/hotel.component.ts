@@ -1,8 +1,6 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { Garden } from "../interfaces/garden";
 import { CommunicationService } from "./../communication.service";
-import { MatDialog } from '@angular/material/dialog';
-import { JardinDetailsComponent } from "./jardin-details/jardin-details.component";
 import { GardenContent } from "../interfaces/garden-content";
 
 @Component({
@@ -16,26 +14,24 @@ export class HotelComponent {
   @ViewChild("newHotelCity") newHotelCity: ElementRef;
 
   public gardens: Garden[] = [];
-  private gardenContent: GardenContent;  public duplicateError: boolean = false;
+  public gardenContent: GardenContent; 
+  public duplicateError: boolean = false;
 
-  public constructor(private communicationService: CommunicationService, private dialog: MatDialog) {}
+  public constructor(private communicationService: CommunicationService) {}
 
   public ngOnInit(): void {
-    this.getHotels();
+    this.getGardens();
   }
+
   // TODO: rename for english title
   public showJardinDetails(garden: Garden) {
-    // let gardenContent: GardenContent;
-    this.communicationService.getGardenContent(garden.jardinid).subscribe((content: GardenContent) => { this.gardenContent = content;});
-    this.dialog.open(JardinDetailsComponent, {
-      width: "1000px",
-      height: "1000px",
-      autoFocus: true,
-      data: this.gardenContent,
-  });
-
+    this.communicationService.getGardenContent(garden.jardinid).subscribe((content: GardenContent) => { 
+      this.gardenContent = content;
+      console.table(this.gardenContent.parcelles[0]);
+    });
   }
-  public getHotels(): void {
+
+  public getGardens(): void {
     this.communicationService.getAllGardens().subscribe((gardens: Garden[]) => {
       this.gardens = gardens;
     });

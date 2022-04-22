@@ -28,4 +28,64 @@
     </tbody>
   </table>
   
+  <div *ngIf="gardenContent" id="dialog-header">
+    <h1 mat-dialog-title>Garden</h1>
+    <div mat-dialog-content class="goal-container">
+      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+        <thead class="header">
+          <th class="contentCell">Nom variété</th>
+          <th class="contentCell">Id rang</th>
+          <th class="contentCell">Id parcelle</th>
+          <th class="contentCell">Type de mise en place</th>
+        </thead>
+        <tbody>
+          <tr class="blank_row" *ngFor="let rowContent of gardenContent.rowcontents;">
+            <td class="contentCell"> {{rowContent.nomvariete}} </td>
+            <td class="contentCell"> {{rowContent.rangid}}</td>
+            <td class="contentCell"> {{rowContent.parcelleid}}</td>
+            <td class="contentCell"> {{rowContent.typemisenplace}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <header> Informations du jardin </header>
+      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+        <thead class="header">
+          <th class="contentCell">Id parcelle</th>
+          <th class="contentCell">coordonnee X</th>
+          <th class="contentCell">coordonnee Y</th>
+          <th class="contentCell">dimension x</th>
+          <th class="contentCell">dimension Y</th>
+        </thead>
+        <tbody>
+          <tr class="blank_row" *ngFor="let parcel of gardenContent.parcelles;">
+            <td class="contentCell"> {{parcel.parcelleid}} </td>
+            <td class="contentCell"> {{parcel.coordonneex}}</td>
+            <td class="contentCell"> {{parcel.coordonneey}}</td>
+            <td class="contentCell"> {{parcel.dimensionx}}</td>
+            <td class="contentCell"> {{parcel.dimensiony}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+        <thead class="header">
+          <th class="contentCell">Id rang</th>
+          <th class="contentCell">Id parcelle</th>
+          <th class="contentCell">coordonnee X</th>
+          <th class="contentCell">coordonnee y</th>
+          <th class="contentCell">numero</th>
+          <th class="contentCell">Jours de jachere</th>
+        </thead>
+        <tbody>
+          <tr class="blank_row" *ngFor="let row of gardenContent.rows;">
+            <td class="contentCell"> {{row.rangid}} </td>
+            <td class="contentCell"> {{row.parcelleid}}</td>
+            <td class="contentCell"> {{row.coordonneex}}</td>
+            <td class="contentCell"> {{row.coordonneey}}</td>
+            <td class="contentCell"> {{row.numero}}</td>
+            <td class="contentCell"> {{row.joursdejachere}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
 </div>

@@ -1,6 +1,6 @@
 export interface Parcelle {
     parcelleid: string,
-    jardinId: string,
+    jardinid: string,
     coordonneex: string,
     coordonneey: string,
     dimensionx: string,

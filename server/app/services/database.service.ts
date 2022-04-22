@@ -30,7 +30,7 @@ export class DatabaseService {
   public async getGardenContent(gardenId: string): Promise<GardenContent> {
     const rowContents = await this.executeQuery(DatabaseQuery.getRowContents, [...arguments]);
     const concernedRows =  await this.executeQuery(DatabaseQuery.getAllTable + `Rang WHERE jardinId = '${gardenId}' ;`);
-    const parcels = await this.executeQuery(DatabaseQuery.getAllTable + `Rang WHERE jardinId = '${gardenId}' ;`);
+    const parcels = await this.executeQuery(DatabaseQuery.getAllTable + `Parcelle WHERE jardinId = '${gardenId}' ;`);
     return {rows: concernedRows.rows, rowcontents: rowContents.rows, parcelles: parcels.rows };
   }
   public async getVarietyDetails(varietyName: string): Promise<pg.QueryResult> {
