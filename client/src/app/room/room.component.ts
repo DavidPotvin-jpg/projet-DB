@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { HotelPK } from "../../../../common/tables/HotelPK";
 import { Room } from "../../../../common/tables/Room";
 import { CommunicationService } from "../communication.service";
+import { Variety } from "../interfaces/variety";
 
 @Component({
   selector: "app-room",
@@ -19,6 +20,10 @@ export class RoomComponent implements OnInit {
     name: "placeholderHotel",
   };
 
+  public varieties: Variety[] = [];
+  public selectedVariety: string = 'random Name';
+
+
   @ViewChild("newRoomNb") newRoomNb: ElementRef;
   @ViewChild("newRoomType") newRoomType: ElementRef;
   @ViewChild("newRoomPrice") newRoomPrice: ElementRef;
@@ -31,6 +36,8 @@ export class RoomComponent implements OnInit {
       this.selectedHotel = this.hotelPKs[0];
       this.getRooms();
     });
+
+    this.getVarieties();
   }
 
   public updateSelectedHotel(hotelID: any) {
@@ -45,6 +52,14 @@ export class RoomComponent implements OnInit {
       .subscribe((rooms: Room[]) => {
         this.rooms = rooms;
       });
+  }
+
+  public getVarieties() {
+    this.communicationService
+    .getVarieties()
+    .subscribe((varieties: Variety[]) => {
+      this.varieties = varieties;
+    });
   }
 
   private refresh() {

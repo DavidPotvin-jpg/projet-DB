@@ -31,13 +31,14 @@
     padding: 10px;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
     background-color: var(--theme-lightblue-hover);
 }
 
 [placeholder]:empty::before {
     content: attr(placeholder);
-    color: var(--theme-lightblue-placeholder); 
+    color: var(--theme-lightblue-placeholder);
 }
 
 [placeholder]:empty:focus::before {
@@ -48,14 +49,14 @@
     color: var(--theme-lightblue);
 }
 
-.blank_row:not(.nohover):hover { 
-    color: var(--theme-lightblue); 
+.blank_row:not(.nohover):hover {
+    color: var(--theme-lightblue);
 }
 
 .deletebtn {
     border-radius: 4px;
-    color: white; 
-    background-color: #9A75F0; 
+    color: white;
+    background-color: #9A75F0;
     border-style: none;
 }
 
@@ -65,4 +66,8 @@
     margin-right: 10px;
     color: white;
     background-color: #6E9EEB;
+}
+
+.search-input {
+    width: 500px;
 }
