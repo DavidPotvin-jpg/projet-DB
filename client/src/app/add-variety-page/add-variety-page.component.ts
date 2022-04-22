@@ -12,6 +12,7 @@ export class AddVarietyPageComponent implements OnInit {
   public seasons: any[];
   public selectedSetupPeriod: number;
   public selectedHarvestPeriod: number;
+  public varietyUploaded: boolean;
   constructor(private communicationService: CommunicationService) {
     this.variety = {
       nom: '',
@@ -24,13 +25,13 @@ export class AddVarietyPageComponent implements OnInit {
       perioderecolte: '',
       commentairegenerale: '',
   }
-    this.seasons = 
-    [{ id: 1, name: 'Automne' },
+    this.seasons = [{ id: 1, name: 'Automne' },
     { id: 2, name: 'Hiver' },
     { id: 3, name: 'Printemps' },
     { id: 4, name: 'Été' }]
     this.selectedSetupPeriod = 1;
     this.selectedHarvestPeriod = 1;
+    this.varietyUploaded = false;
    }
 
   ngOnInit(): void {
@@ -38,8 +39,12 @@ export class AddVarietyPageComponent implements OnInit {
   addVariety(): void {
     this.variety.periodemiseEnPlace = this.seasons[this.selectedSetupPeriod].name;
     this.variety.perioderecolte = this.seasons[this.selectedHarvestPeriod].name;
-    if (!this.isFormFilled()) return;
-    this.communicationService.addVariety(this.variety);
+    if (!this.isFormFilled()) {
+      this.varietyUploaded = false;
+      return;
+    }
+    this.communicationService.addVariety(this.variety).subscribe();
+    this.varietyUploaded = true;
     this.clearVariety();
   }
   isFormFilled(): boolean {
@@ -65,15 +70,3 @@ export class AddVarietyPageComponent implements OnInit {
     }
   }
 }
-
-// this.variety = {
-//   nom: '',
-//   anneedemiseenmarche: 2022,
-//   descriptionssemis: '',
-//   plantation: '',
-//   entretien: '',
-//   recolte: '',
-//   periodemiseEnPlace: '',
-//   perioderecolte: '',
-//   commentairegenerale: '',
-// }
