@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from '../communication.service';
 import { Variety } from '../interfaces/variety';
 
 @Component({
@@ -11,7 +12,7 @@ export class AddVarietyPageComponent implements OnInit {
   public seasons: any[];
   public selectedSetupPeriod: number;
   public selectedHarvestPeriod: number;
-  constructor() {
+  constructor(private communicationService: CommunicationService) {
     this.variety = {
       nom: '',
       anneedemiseenmarche: 2022,
@@ -38,6 +39,7 @@ export class AddVarietyPageComponent implements OnInit {
     this.variety.periodemiseEnPlace = this.seasons[this.selectedSetupPeriod].name;
     this.variety.perioderecolte = this.seasons[this.selectedHarvestPeriod].name;
     if (!this.isFormFilled()) return;
+    this.communicationService.addVariety(this.variety);
     this.clearVariety();
   }
   isFormFilled(): boolean {
