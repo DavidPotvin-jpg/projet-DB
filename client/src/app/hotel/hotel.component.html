@@ -31,7 +31,8 @@
   <div *ngIf="gardenContent" id="dialog-header">
     <h1 mat-dialog-title>Garden</h1>
     <div mat-dialog-content class="goal-container">
-      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+      <header> Contenu des rangs  pour le jardin</header>
+      <table id="ht" align="center" border="1" width="750" class="table-striped table-hover">
         <thead class="header">
           <th class="contentCell">Nom variété</th>
           <th class="contentCell">Id rang</th>
@@ -47,14 +48,14 @@
           </tr>
         </tbody>
       </table>
-      <header> Informations du jardin </header>
-      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+      <header> Parcelles contenues dans le jardin</header>
+      <table id="ht" align="center" border="1" width="750" class="table-striped table-hover">
         <thead class="header">
           <th class="contentCell">Id parcelle</th>
-          <th class="contentCell">coordonnee X</th>
-          <th class="contentCell">coordonnee Y</th>
-          <th class="contentCell">dimension x</th>
-          <th class="contentCell">dimension Y</th>
+          <th class="contentCell">Coordonnee X</th>
+          <th class="contentCell">Coordonnee Y</th>
+          <th class="contentCell">Dimension X</th>
+          <th class="contentCell">Dimension Y</th>
         </thead>
         <tbody>
           <tr class="blank_row" *ngFor="let parcel of gardenContent.parcelles;">
@@ -66,13 +67,14 @@
           </tr>
         </tbody>
       </table>
-      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+      <header> Rangs contenus  par le jardin</header>
+      <table id="ht" align="center" border="1" width="750" class="table-striped table-hover">
         <thead class="header">
           <th class="contentCell">Id rang</th>
           <th class="contentCell">Id parcelle</th>
-          <th class="contentCell">coordonnee X</th>
-          <th class="contentCell">coordonnee y</th>
-          <th class="contentCell">numero</th>
+          <th class="contentCell">Coordonnee X</th>
+          <th class="contentCell">Coordonnee y</th>
+          <th class="contentCell">Numero</th>
           <th class="contentCell">Jours de jachere</th>
         </thead>
         <tbody>

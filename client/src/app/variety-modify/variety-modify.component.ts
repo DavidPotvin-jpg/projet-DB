@@ -37,11 +37,38 @@ export class VarietyModifyComponent implements OnInit {
     console.table(this.modifiedVariety);
   }
 
-  modifyVariety(variety: Variety) {
+  deselectVariety() {
     this.selectedVariety = undefined;
-    this.communicationService.patchVariety(variety.nom, variety).subscribe(() => {
+    this.reinitializeVariety();
+  }
+
+  modifyVariety() {
+    if (!this.selectedVariety) return;
+    this.communicationService.patchVariety(this.selectedVariety.nom, this.selectedVariety).subscribe(() => {
       this.refresh();
     });
+    this.selectedVariety = undefined;
+  }
+
+  deleteVariety(varietyName: string) {
+    this.communicationService.deleteVariety(varietyName).subscribe(() => {
+      this.refresh();
+    });
+    this.selectedVariety = undefined;
+  }
+
+  private reinitializeVariety() {
+    this.modifiedVariety = {
+      nom: '',
+      anneedemiseenmarche: 0,
+      descriptionssemis: 'description',
+      plantation: 'plantation',
+      entretien: 'entretien',
+      recolte: 'recolte',
+      periodemiseenplace: 'Automne',
+      perioderecolte: 'Hiver',
+      commentairegenerale: 'test',
+    };
   }
 
   private refresh() {
