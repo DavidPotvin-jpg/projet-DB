@@ -1,1 +1,40 @@
-<p>variety-modify works!</p>
+<div id="room">
+    <h1>Modification de Variétés</h1>
+  
+    <table
+      id="ht"
+      align="center"
+      border="1"
+      width="1000"
+      class="table-striped table-hover"
+    >
+      <thead class="roomsheader">
+        <th class="contentCell">nom de la variéte</th>
+        <th class="contentCell">année de mise en marche</th>
+        <th class="contentCell">description semis</th>
+        <th class="contentCell">plantation</th>
+        <th class="contentCell">entretien</th>
+        <th class="contentCell">recolte</th>
+        <th class="contentCell">période de mise en place</th>
+        <th class="contentCell">période de récolte</th>
+        <th class="contentCell">commentaire générale</th>
+        <th class="actionCell">ACTION</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let variety of varieties; let i = index">
+          <td class="contentCell">{{ variety.nom }}</td>
+          <td class="contentCell">{{ variety.anneedemiseenmarche }}</td>
+          <td class="contentCell">{{ variety.descriptionssemis }}</td>
+          <td class="contentCell">{{ variety.plantation }}</td>
+          <td class="contentCell">{{ variety.entretien }}</td>
+          <td class="contentCell">{{ variety.recolte }}</td>
+          <td class="contentCell">{{ variety.periodemiseenplace }}</td>
+          <td class="contentCell">{{ variety.perioderecolte }}</td>
+          <td class="contentCell">{{ variety.commentairegenerale }}</td>
+          <td class="actionCell"><button (click)="openModifyPopUp(variety)">Modifier</button></td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  

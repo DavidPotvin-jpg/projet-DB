@@ -1,0 +1,22 @@
+<div id="dialog-header">
+    <h1 mat-dialog-title>{{ garden.nom }}</h1>
+</div>
+<div mat-dialog-content class="goal-container">
+    <header> Informations du jardin </header>
+        <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+    <thead class="header">
+      <th class="contentCell">Nom variété</th>
+      <th class="contentCell">Id rang</th>
+      <th class="contentCell">Id parcelle</th>
+      <th class="contentCell">Type de mise en place</th>
+    </thead>
+    <tbody>
+      <tr class="blank_row" *ngFor="let gardenContent of gardenContents;">
+        <td class="contentCell"> {{gardenContent.nomvariete}} </td>
+        <td class="contentCell"> {{gardenContent.rangid}}</td>
+        <td class="contentCell"> {{gardenContent.parcelleid}}</td>
+        <td class="contentCell"> {{gardenContent.typemisenplace}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

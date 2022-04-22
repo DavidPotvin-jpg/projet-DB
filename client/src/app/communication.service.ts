@@ -10,6 +10,7 @@ import { Guest } from "../../../common/tables/Guest";
 import { Variety } from "./interfaces/variety";
 import { Garden } from "./interfaces/garden";
 import { Plant } from "./interfaces/plant";
+import { RowContent } from "./interfaces/row-content";
 @Injectable()
 export class CommunicationService {
   private readonly BASE_URL: string = "http://localhost:3000/database";
@@ -44,10 +45,10 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Variety[]>('getVarieties')));
   }
 
-  public getGarden(id: string): Observable<Garden> {
+  public getGarden(id: string): Observable<RowContent[]> {
     return this.http
-      .get<Garden>(`${this.BASE_URL}/gardens/${id}`)
-      .pipe(catchError(this.handleError<Garden>('getGardens')));
+      .get<RowContent[]>(`${this.BASE_URL}/gardens/${id}`)
+      .pipe(catchError(this.handleError<RowContent[]>('getGardens')));
   }
 
   public getAllGardens(): Observable<Garden[]> {

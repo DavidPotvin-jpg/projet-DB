@@ -1,6 +1,6 @@
 export enum DatabaseQuery {
     getAllTable = 'SELECT * FROM bdschema.',
-    getGardenContent = "SELECT * FROM bdschema.ContenuRang WHERE jardinId = $1;",
+    getGardenDetails = "SELECT * FROM bdschema.ContenuRang WHERE jardinId = $1;",
     getVarietyDetails = "SELECT * FROM bdschema.Variete WHERE nom = $1",
     searchPlant = "SELECT * FROM bdschema.Plante WHERE nom LIKE",
                             

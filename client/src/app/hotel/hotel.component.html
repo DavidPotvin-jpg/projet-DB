@@ -16,7 +16,7 @@
     </thead>
     <tbody>
       <tr class="blank_row" *ngFor="let garden of gardens;">
-          <td class="contentCell"> {{garden.jardinid}} </td>
+          <td class="contentCell"> <button (click)="showJardinDetails(garden)" class="goal-container">{{garden.jardinid}} </button></td>
           <td class="contentCell"> {{garden.nom}}</td>
           <td class="contentCell"> {{garden.surface}}</td>
           <td class="contentCell"> {{garden.estpotager}}</td>
