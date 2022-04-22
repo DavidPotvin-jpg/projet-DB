@@ -1,9 +1,9 @@
 export interface Plant {
     planteId: string;
-    nomLatin: string;
-    nomVariete: string;
+    nomlatin: string;
+    nomvariete: string;
     nom: string;
     categorie: string;
     type_: string;
-    sousType: string;
+    soustype: string;
 }

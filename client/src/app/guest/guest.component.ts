@@ -8,12 +8,12 @@ import { Plant } from "../interfaces/plant";
 
 const fakePlant: Plant = {
   planteId : 'string',
-  nomLatin : 'string',
-  nomVariete : 'string',
+  nomlatin : 'string',
+  nomvariete : 'string',
   nom : 'string',
   categorie : 'string',
   type_: 'string',
-  sousType: 'string'
+  soustype: 'string'
 }
 @Component({
   selector: "app-room",
