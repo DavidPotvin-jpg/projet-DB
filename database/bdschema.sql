@@ -29,6 +29,22 @@ CREATE TABLE IF NOT EXISTS bdschema.Jardin(
 		ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE OR REPLACE FUNCTION verify_max_hauteur() RETURNS TRIGGER AS $verify_max_hauteur$
+    BEGIN
+		-- TODO: Verify all the NOT NULL values
+		IF NEW.estVerger IS NOT true AND NEW.hauteurMax IS NOT NULL THEN
+        RAISE EXCEPTION 'hauteur max only available when estVerger is true';
+    	END IF;
+		RETURN NULL;
+	END;
+    $verify_max_hauteur$
+    LANGUAGE plpgsql;
+        
+
+CREATE OR REPLACE TRIGGER  contenuRangModification 
+	BEFORE INSERT OR UPDATE ON bdschema.Jardin
+	FOR ROW EXECUTE FUNCTION verify_max_hauteur();
+
 CREATE TABLE IF NOT EXISTS bdschema.Semencier(
 	semencierId VARCHAR(10) NOT NULL,
 	nom VARCHAR(20) NOT NULL,

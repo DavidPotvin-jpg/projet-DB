@@ -156,35 +156,35 @@ INSERT INTO bdschema.Rang(rangId, jardinId, parcelleId, coordonneeX, coordonneeY
 
 -- CONTENU RANG JARDIN 0 PARCELLE 0
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Legumieres', '0', '0', '0', 'mise en place 1');
+	VALUES ('Legumieres', '0', '0', '0', 'Injection de racines');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Fruitieres', '1', '0', '0', 'mise en place 2');
+	VALUES ('Fruitieres', '1', '0', '0', 'Injection de graines');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('tuberosum', '2', '0', '0', 'mise en place 2');
+	VALUES ('tuberosum', '2', '0', '0', 'Injection de graines');
 -- CONTENU RANG JARDIN 0 PARCELLE 1
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('tuberosum', '0', '0', '1', 'mise en place 2');
+	VALUES ('tuberosum', '0', '0', '1', 'Injection de graines');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Legumieres', '1', '0', '1', 'mise en place 3');
+	VALUES ('Legumieres', '1', '0', '1', 'Aquaculture');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Fruitieres', '2', '0', '1', 'mise en place 1');
+	VALUES ('Fruitieres', '2', '0', '1', 'Injection de racines');
 -- CONTENU RANG JARDIN 0 PARCELLE 2
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Legumieres', '0', '0', '2', 'mise en place 1');
+	VALUES ('Legumieres', '0', '0', '2', 'Injection de racines');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('tuberosum', '1', '0', '2', 'mise en place 3');
+	VALUES ('tuberosum', '1', '0', '2', 'Aquaculture');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Fruitieres', '2', '0', '2', 'mise en place 2');
+	VALUES ('Fruitieres', '2', '0', '2', 'Injection de graines');
 
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Fruitieres', '0', '1', '0', 'mise en place 2');
+	VALUES ('Fruitieres', '0', '1', '0', 'Injection de graines');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('Fruitieres', '0', '1', '1', 'mise en place 3');
+	VALUES ('Fruitieres', '0', '1', '1', 'Aquaculture');
 
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('tuberosum', '0', '2', '2', 'mise en place 3');
+	VALUES ('tuberosum', '0', '2', '2', 'Aquaculture');
 INSERT INTO bdschema.ContenuRang(nomVariete, rangId, jardinId, parcelleId, typeMisEnPlace)
-	VALUES ('tuberosum', '0', '2', '3', 'mise en place 1');
+	VALUES ('tuberosum', '0', '2', '3', 'Injection de racines');
 
 INSERT INTO bdschema.ProductionSemencier(nomVariete, semencier, estBiologique)
 	VALUES ('Legumieres', '0', true);
