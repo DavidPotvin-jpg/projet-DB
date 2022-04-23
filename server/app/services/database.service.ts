@@ -41,7 +41,6 @@ export class DatabaseService {
          variety.periodeRecolte, variety.commentaireGenerale]);
   }
   public async deleteVariety(varietyName: string): Promise<pg.QueryResult> {
-    console.info('delete variety');
     return await  this.executeQuery(DatabaseQuery.deleteVariety, [varietyName]);
 
   }
@@ -53,14 +52,12 @@ export class DatabaseService {
   }
   private async executeQuery(query: string, data?: any): Promise<pg.QueryResult> {
     try {
-      console.info(query);
       const client = await this.pool.connect();
       const res =  data? await client.query(query, data) : await client.query(query);
       client.release()
       return res;
 
     } catch(error) {
-      console.error(error);
       return error;
     }
   }
