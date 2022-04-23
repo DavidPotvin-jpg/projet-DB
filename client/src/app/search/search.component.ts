@@ -11,7 +11,7 @@ import { Plant } from "../interfaces/plant";
   templateUrl: "./search.component.html",
   styleUrls: ["./search.component.css"],
 })
-export class GuestComponent {
+export class SearchComponent {
   public hotelPKs: HotelPK[] = [];
   public rooms: Room[] = [];
   public guests: Guest[] = [];

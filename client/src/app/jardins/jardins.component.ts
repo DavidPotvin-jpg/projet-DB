@@ -4,11 +4,11 @@ import { CommunicationService } from "./../communication.service";
 import { GardenContent } from "../interfaces/garden-content";
 
 @Component({
-  selector: "app-jardinsns",
-  templateUrlapp-jardinsins.component.html",
+  selector: "app-jardins",
+  templateUrl: "./jardins.component.html",
   styleUrls: ["./jardins.component.css"],
 })
-export class HotelComponent {
+export class JardinsComponent {
   @ViewChild("newHotelNb") newHotelNb: ElementRef;
   @ViewChild("newHotelName") newHotelName: ElementRef;
   @ViewChild("newHotelCity") newHotelCity: ElementRef;
