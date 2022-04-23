@@ -21,10 +21,20 @@ export class VarietyModifyComponent implements OnInit {
     perioderecolte: 'Hiver',
     commentairegenerale: 'test',
   };
+  public seasons = [{ id: 1, name: 'Automne' },
+    { id: 2, name: 'Hiver' },
+    { id: 3, name: 'Printemps' },
+    { id: 4, name: 'Été' }]
+
   constructor(private communicationService: CommunicationService) { }
 
   ngOnInit(): void {
     this.getVarieties();
+  }
+
+  get canModify(): boolean {
+    const seasonsName: string[] = this.seasons.map((season) => season.name);
+    return seasonsName.includes(this.modifiedVariety.periodemiseenplace) && seasonsName.includes(this.modifiedVariety.perioderecolte)
   }
 
   isSelectedVariety(variety: Variety) {
@@ -44,17 +54,17 @@ export class VarietyModifyComponent implements OnInit {
 
   modifyVariety() {
     if (!this.selectedVariety) return;
-    this.communicationService.patchVariety(this.selectedVariety.nom, this.selectedVariety).subscribe(() => {
+    this.communicationService.patchVariety(this.modifiedVariety.nom, this.modifiedVariety).subscribe(() => {
       this.refresh();
     });
-    this.selectedVariety = undefined;
+    this.deselectVariety();
   }
 
   deleteVariety(varietyName: string) {
     this.communicationService.deleteVariety(varietyName).subscribe(() => {
       this.refresh();
     });
-    this.selectedVariety = undefined;
+    this.deselectVariety();
   }
 
   private reinitializeVariety() {

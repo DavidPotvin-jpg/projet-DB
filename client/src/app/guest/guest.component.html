@@ -3,23 +3,22 @@
 
     <div class="divider"></div>
 
-    <!-- <input type="text" placeholder="Rechercher une plante par son nom..."> -->
     <input placeholder="Rechercher une plante par son nom" [(ngModel)]="searchInput" class="search-input"><button (click)="searchPlant()" class="search-button">Rechercher</button>
     <div *ngIf="this.plants.length > 0">
         <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
             <thead class="header">
+                <th class="contentCell">nom</th>
                 <th class="contentCell">nom latin</th>
                 <th class="contentCell">nom variété</th>
-                <th class="contentCell">nom</th>
                 <th class="contentCell">catégorie</th>
                 <th class="contentCell">type</th>
                 <th class="contentCell">sous-type</th>
             </thead>
             <tbody>
                 <tr *ngFor="let plant of plants">
+                    <td class="contentCell">{{ plant.nom }}</td>
                     <td class="contentCell">{{ plant.nomlatin }}</td>
                     <td class="contentCell">{{ plant.nomvariete }}</td>
-                    <td class="contentCell">{{ plant.nom }}</td>
                     <td class="contentCell">{{ plant.categorie }}</td>
                     <td class="contentCell">{{ plant.type_ }}</td>
                     <td class="contentCell">{{ plant.soustype }}</td>

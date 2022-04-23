@@ -35,7 +35,6 @@ export class AddVarietyPageComponent implements OnInit {
     this.selectedSetupPeriod = 1;
     this.selectedHarvestPeriod = 1;
     this.varietyUploaded = false;
-    // this.serverVarieties = [];
     this.errorMessage = '';
    }
 
@@ -79,7 +78,6 @@ export class AddVarietyPageComponent implements OnInit {
   isVarietyUnique(varietyName: string) {
     this.communicationService.getVarieties().subscribe( (result) => {
       const serverVarieties = result;
-      // if (!this.serverVarieties) return false;
       const varietyDoubled = serverVarieties.find(element => element.nom === varietyName);
       this.isUnique = varietyDoubled === undefined;
       if (this.isUnique) {

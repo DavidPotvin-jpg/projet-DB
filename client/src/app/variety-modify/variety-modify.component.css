@@ -6,9 +6,9 @@
 }
 
 #ht {
-    /* align: "center"; */
     border: "1";
-    width: "1000";
+    width: "1000px";
+    max-width: "1000px";
     background-color: white;
     text-align: left;
 }

@@ -3,7 +3,6 @@
   
     <table
       id="ht"
-
       class="table-striped table-hover"
     >
       <thead class="roomsheader">
@@ -16,7 +15,7 @@
         <th class="contentCell">période de mise en place</th>
         <th class="contentCell">période de récolte</th>
         <th class="contentCell">commentaire générale</th>
-        <th class="actionCell">ACTION</th>
+        <th class="actionCell">ACTIONS</th>
       </thead>
       <tbody>
         <tr *ngFor="let variety of varieties; let i = index">
@@ -37,10 +36,18 @@
           <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.recolte"></td>
 
           <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.periodemiseenplace }}</td>
-          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.periodemiseenplace"></td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)">
+            <select [(ngModel)]="modifiedVariety.periodemiseenplace">
+              <option [value]="item.name" *ngFor="let item of seasons">{{item.name}}</option>
+            </select>
+          </td>
 
           <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.perioderecolte }}</td>
-          <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.perioderecolte"></td>
+          <td class="contentCell" *ngIf="isSelectedVariety(variety)">
+            <select [(ngModel)]="modifiedVariety.perioderecolte">
+              <option [value]="item.name" *ngFor="let item of seasons" selected>{{item.name}}</option>
+            </select>
+          </td>
 
           <td class="contentCell" *ngIf="!isSelectedVariety(variety)">{{ variety.commentairegenerale }}</td>
           <td class="contentCell" *ngIf="isSelectedVariety(variety)"><input type="text" [(ngModel)]="modifiedVariety.commentairegenerale"></td>
@@ -50,7 +57,7 @@
             <button (click)="deleteVariety(variety.nom)">Suprimer</button>
           </td>
           <td class="actionCell" *ngIf="isSelectedVariety(variety)">
-            <button (click)="modifyVariety()">Confirmer</button>
+            <button (click)="modifyVariety()" [disabled]="!canModify">Confirmer</button>
             <button (click)="deselectVariety()">Annuler</button>
           </td>
 
