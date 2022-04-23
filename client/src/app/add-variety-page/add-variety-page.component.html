@@ -11,7 +11,7 @@
     <form>
         <label for="fname">nom variété:</label><br>
         <input type="text" id="fname" name="fname" [(ngModel)]="variety.nom" placeholder="ex : Legumieres"><br>
-        <label for="fname" *ngIf="variety.nom.length < 1 || variety.nom.length > 30" class="error">Ce champ doit avoir entre 1 et 30 characteres</label><br>
+        <label for="fname" *ngIf="variety.nom.length < 1 || variety.nom.length > 30" class="error">Ce champ doit avoir entre 1 et 30 charactères</label><br>
 
         <label for="fyear">Annee de mise en marche:</label><br>
         <input type="number" onKeyDown="return false" min="1900" max="2022" step="1" id="fyear" name="fyear" [(ngModel)]="variety.anneedemiseenmarche"><br>
@@ -22,15 +22,15 @@
 
         <label for=" fplantation ">Plantation:</label><br>
         <input type="text " id="fplantation " name="fplantation " [(ngModel)]="variety.plantation" placeholder="ex : Hautes herbes"><br>
-        <label for="fname" *ngIf="variety.plantation.length < 1 || variety.plantation.length > 50" class="error">Ce champ doit avoir entre 1 et 50 characteres</label><br>
+        <label for="fname" *ngIf="variety.plantation.length < 1 || variety.plantation.length > 50" class="error">Ce champ doit avoir entre 1 et 50 charactères</label><br>
 
         <label for="fentretien ">Entretien:</label><br>
         <input type="text " id="fentretien " name="fentretien " [(ngModel)]="variety.entretien" placeholder="ex : Une fois par jour"><br>
-        <label for="fname" *ngIf="variety.entretien.length < 1 || variety.entretien.length > 50" class="error">Ce champ doit avoir entre 1 et 50 characteres</label><br>
+        <label for="fname" *ngIf="variety.entretien.length < 1 || variety.entretien.length > 50" class="error">Ce champ doit avoir entre 1 et 50 charactères</label><br>
 
         <label for="frecolte ">Récolte:</label><br>
         <input type="text " id="frecolte " name="frecolte " [(ngModel)]="variety.recolte" placeholder="ex : Le soir"><br>
-        <label for="fname" *ngIf="variety.recolte.length < 1 || variety.recolte.length > 50" class="error">Ce champ doit avoir entre 1 et 50 characteres</label><br>
+        <label for="fname" *ngIf="variety.recolte.length < 1 || variety.recolte.length > 50" class="error">Ce champ doit avoir entre 1 et 50 charactères</label><br>
 
         <label for="fsetUpPeriod ">Période de mise en place:</label><br>
         <select [(ngModel)]="selectedSetupPeriod">
