@@ -41,6 +41,7 @@ export class AddVarietyPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   addVariety(): void {
     this.variety.periodemiseenplace = this.seasons[this.selectedSetupPeriod].name;
     this.variety.perioderecolte = this.seasons[this.selectedHarvestPeriod].name;
@@ -55,7 +56,8 @@ export class AddVarietyPageComponent implements OnInit {
     this.variety.anneedemiseenmarche > 0 &&
     this.variety.descriptionssemis.length > 0 &&
      this.variety.plantation.length > 0 && this.variety.plantation.length <= 50 &&
-     this.variety.entretien.length > 0 && this.variety.entretien.length <= 50);
+     this.variety.entretien.length > 0 && this.variety.entretien.length <= 50 && 
+     this.variety.recolte.length > 0 && this.variety.recolte.length <= 50);
   }
   
   clearVariety() {
