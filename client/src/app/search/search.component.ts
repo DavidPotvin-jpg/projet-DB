@@ -7,9 +7,9 @@ import { FormGroup } from "@angular/forms";
 import { Plant } from "../interfaces/plant";
 
 @Component({
-  selector: "app-room",
-  templateUrl: "./guest.component.html",
-  styleUrls: ["./guest.component.css"],
+  selector: "app-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.css"],
 })
 export class GuestComponent {
   public hotelPKs: HotelPK[] = [];

@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS bdschema.TypeSol(
 	PRIMARY KEY (type_)
 );
 
--- TODO: Verification when inserting data | TRIGGER BEFORE ON INSERT
 CREATE TABLE IF NOT EXISTS bdschema.Jardin(
 	jardinId VARCHAR(10) NOT NULL,
 	typeSol VARCHAR(20) NOT NULL,
@@ -31,11 +30,10 @@ CREATE TABLE IF NOT EXISTS bdschema.Jardin(
 
 CREATE OR REPLACE FUNCTION verify_max_hauteur() RETURNS TRIGGER AS $verify_max_hauteur$
     BEGIN
-		-- TODO: Verify all the NOT NULL values
 		IF NEW.estVerger IS NOT true AND NEW.hauteurMax IS NOT NULL THEN
-        RAISE EXCEPTION 'hauteur max only available when estVerger is true';
+        		RAISE EXCEPTION 'hauteur max only available when estVerger is true';
     	END IF;
-		RETURN NULL;
+		RETURN NEW;
 	END;
     $verify_max_hauteur$
     LANGUAGE plpgsql;

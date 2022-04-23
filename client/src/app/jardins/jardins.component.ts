@@ -4,9 +4,9 @@ import { CommunicationService } from "./../communication.service";
 import { GardenContent } from "../interfaces/garden-content";
 
 @Component({
-  selector: "app-hotel",
-  templateUrl: "./hotel.component.html",
-  styleUrls: ["./hotel.component.css"],
+  selector: "app-jardinsns",
+  templateUrlapp-jardinsins.component.html",
+  styleUrls: ["./jardins.component.css"],
 })
 export class HotelComponent {
   @ViewChild("newHotelNb") newHotelNb: ElementRef;
@@ -23,7 +23,6 @@ export class HotelComponent {
     this.getGardens();
   }
 
-  // TODO: rename for english title
   public showJardinDetails(garden: Garden) {
     this.communicationService.getGardenContent(garden.jardinid).subscribe((content: GardenContent) => { 
       this.gardenContent = content;
