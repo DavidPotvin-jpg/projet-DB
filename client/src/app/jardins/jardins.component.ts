@@ -26,7 +26,6 @@ export class JardinsComponent {
   public showJardinDetails(garden: Garden) {
     this.communicationService.getGardenContent(garden.jardinid).subscribe((content: GardenContent) => { 
       this.gardenContent = content;
-      console.table(this.gardenContent.parcelles[0]);
     });
   }
 

@@ -60,14 +60,11 @@ export class Server {
   private onListening(): void {
     const addr: string | AddressInfo | null = this.server.address();
     if (!addr) { 
-      console.info('server adress is null'); 
+      console.log('server adress is null'); 
       return;
     }
     const bind: string = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
     // tslint:disable-next-line:no-console
     console.log(`Listening on ${bind}`);
-    console.info('console info working');
-    const dbService = new DatabaseService();
-    dbService.getGardenContent('1').then((obj) => {console.table(obj.rows);});
   }
 }

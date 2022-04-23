@@ -44,7 +44,6 @@ export class VarietyModifyComponent implements OnInit {
   selectVariety(variety: Variety) {
     this.selectedVariety = variety;
     this.modifiedVariety = {...variety};
-    console.table(this.modifiedVariety);
   }
 
   deselectVariety() {

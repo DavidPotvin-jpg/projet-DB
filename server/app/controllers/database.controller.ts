@@ -28,7 +28,6 @@ export class DatabaseController {
     router.post("/varieties", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const variety: Variety = req.body;
-        console.info(variety);
         await this.databaseService.insertVariety(variety);
         res.status(200).send('variety inserted');
       } catch(error) {
@@ -39,9 +38,7 @@ export class DatabaseController {
     router.patch("/varieties/:name", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const updatedVariety: Variety = req.body;
-        console.table(updatedVariety);
         updatedVariety.nom = req.params.name;
-        console.table(updatedVariety);
         await this.databaseService.updateVariety(updatedVariety);
         res.status(204).send();
 
@@ -53,7 +50,6 @@ export class DatabaseController {
     router.get("/varieties", async (req: Request, res: Response, _: NextFunction) => {
       try {
         const varietyRowContents = await this.databaseService.getAllFromVariety();
-        console.info(varietyRowContents);
         res.json([...varietyRowContents.rows]);
         
       } catch (error) {
@@ -99,7 +95,6 @@ export class DatabaseController {
         // TODO: handle empty info
         const id = req.params.id;
         const gardenRowsContents = await this.databaseService.getGardenContent(id);
-        console.table(gardenRowsContents);
         res.json(gardenRowsContents);
         
       } catch (error) {

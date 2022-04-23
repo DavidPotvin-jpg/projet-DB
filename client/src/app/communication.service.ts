@@ -25,13 +25,11 @@ export class CommunicationService {
   }
 
   public addVariety(variety: Variety) {
-    console.info(variety);
     return this.http.post<Variety>(`${this.BASE_URL}/varieties`, variety)
     .pipe(catchError(this.handleError<Variety>('addVariety')));
   }
   
   public patchVariety(varietyName: string, variety: Variety): Observable<Variety> {
-    console.info(variety);
     return this.http
       .patch<Variety>(`${this.BASE_URL}/varieties/${varietyName}`, variety)
       .pipe(catchError(this.handleError<Variety>('patchVariety')));
